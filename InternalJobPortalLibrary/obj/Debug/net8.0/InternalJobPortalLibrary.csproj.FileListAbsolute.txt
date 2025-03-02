@@ -1,0 +1,15 @@
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.deps.json
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.runtimeconfig.json
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.dll
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.pdb
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.csproj.AssemblyReference.cache
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.AssemblyInfoInputs.cache
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.AssemblyInfo.cs
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.csproj.CoreCompileInputs.cache
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.sourcelink.json
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.dll
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\obj\Debug\net8.0\refint\InternalJobPortalLibrary.dll
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.pdb
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.genruntimeconfig.cache
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalLibrary\obj\Debug\net8.0\ref\InternalJobPortalLibrary.dll

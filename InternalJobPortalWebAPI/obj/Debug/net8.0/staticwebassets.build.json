@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "4q0iD+9zGJRIy9UFa3ckBDTv4MmUVlM9ccZ5quXKGdE=",
+  "Source": "InternalJobPortalWebAPI",
+  "BasePath": "_content/InternalJobPortalWebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -1,0 +1,6 @@
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalDB\bin\Debug\InternalJobPortalDB.dacpac
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalDB\bin\Debug\InternalJobPortalDB.dll
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalDB\bin\Debug\InternalJobPortalDB.pdb
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalDB\obj\Debug\InternalJobPortalDB.sqlproj.AssemblyReference.cache
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalDB\obj\Debug\InternalJobPortalDB.dll
+C:\DotNet_Training\Internal Job Portal\InternalJobPortalDB\obj\Debug\InternalJobPortalDB.pdb

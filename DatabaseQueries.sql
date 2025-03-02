@@ -22,6 +22,7 @@ CREATE TABLE Skill(
 	SkillLevel CHAR(1)
 );
 
+
 CREATE TABLE JobSkill(
 	JobID CHAR(6) REFERENCES Job(JobID),
 	SkillID CHAR(6) REFERENCES Skill(SkillID),
