@@ -13,7 +13,7 @@ public partial class ApplyJob
 
     public string? ApplicationStatus { get; set; }
 
-    public virtual Employee Employee { get; set; } = null!;
+    public virtual Employee? Employee { get; set; } = null!;
 
-    public virtual JobPost Post { get; set; } = null!;
+    public virtual JobPost? Post { get; set; } = null!;
 }

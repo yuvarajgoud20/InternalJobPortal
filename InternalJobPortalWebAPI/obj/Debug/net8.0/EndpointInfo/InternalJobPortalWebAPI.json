@@ -1,0 +1,404 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "InternalJobPortalWebAPI",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Application": {
+      "get": {
+        "tags": [
+          "Application"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Application"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplyJob"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplyJob"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplyJob"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Application/{postID}/{employeeID}": {
+      "get": {
+        "tags": [
+          "Application"
+        ],
+        "parameters": [
+          {
+            "name": "postID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "employeeID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Application"
+        ],
+        "parameters": [
+          {
+            "name": "postID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "employeeID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplyJob"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplyJob"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplyJob"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Application"
+        ],
+        "parameters": [
+          {
+            "name": "postID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "employeeID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApplyJob": {
+        "type": "object",
+        "properties": {
+          "postID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "employeeID": {
+            "type": "string",
+            "nullable": true
+          },
+          "appliedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "applicationStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "employee": {
+            "$ref": "#/components/schemas/Employee"
+          },
+          "post": {
+            "$ref": "#/components/schemas/JobPost"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Employee": {
+        "type": "object",
+        "properties": {
+          "employeeID": {
+            "type": "string",
+            "nullable": true
+          },
+          "employeeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailID": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalExperience": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "jobID": {
+            "type": "string",
+            "nullable": true
+          },
+          "applyJobs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApplyJob"
+            },
+            "nullable": true
+          },
+          "employeeSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmployeeSkill"
+            },
+            "nullable": true
+          },
+          "job": {
+            "$ref": "#/components/schemas/Job"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmployeeSkill": {
+        "type": "object",
+        "properties": {
+          "employeeID": {
+            "type": "string",
+            "nullable": true
+          },
+          "skillID": {
+            "type": "string",
+            "nullable": true
+          },
+          "skillExperience": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "employee": {
+            "$ref": "#/components/schemas/Employee"
+          },
+          "skill": {
+            "$ref": "#/components/schemas/Skill"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Job": {
+        "type": "object",
+        "properties": {
+          "jobID": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "salary": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "employees": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Employee"
+            },
+            "nullable": true
+          },
+          "jobPosts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobPost"
+            },
+            "nullable": true
+          },
+          "jobSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobSkill"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JobPost": {
+        "type": "object",
+        "properties": {
+          "postID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "jobID": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfPosting": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lastDateToApply": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "noOfVacancies": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "applyJobs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApplyJob"
+            },
+            "nullable": true
+          },
+          "job": {
+            "$ref": "#/components/schemas/Job"
+          }
+        },
+        "additionalProperties": false
+      },
+      "JobSkill": {
+        "type": "object",
+        "properties": {
+          "jobID": {
+            "type": "string",
+            "nullable": true
+          },
+          "skillID": {
+            "type": "string",
+            "nullable": true
+          },
+          "experience": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "job": {
+            "$ref": "#/components/schemas/Job"
+          },
+          "skill": {
+            "$ref": "#/components/schemas/Skill"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Skill": {
+        "type": "object",
+        "properties": {
+          "skillID": {
+            "type": "string",
+            "nullable": true
+          },
+          "skillName": {
+            "type": "string",
+            "nullable": true
+          },
+          "skillLevel": {
+            "type": "string",
+            "nullable": true
+          },
+          "employeeSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmployeeSkill"
+            },
+            "nullable": true
+          },
+          "jobSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobSkill"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+[
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.ApplicationController",
+    "Method": "GetAll",
+    "RelativePath": "api/Application",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.ApplicationController",
+    "Method": "Insert",
+    "RelativePath": "api/Application",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "applyJob",
+        "Type": "InternalJobPortalLibrary.Models.ApplyJob",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.ApplicationController",
+    "Method": "GetOne",
+    "RelativePath": "api/Application/{postID}/{employeeID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "employeeID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.ApplicationController",
+    "Method": "Update",
+    "RelativePath": "api/Application/{postID}/{employeeID}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "employeeID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "applyJob",
+        "Type": "InternalJobPortalLibrary.Models.ApplyJob",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.ApplicationController",
+    "Method": "Delete",
+    "RelativePath": "api/Application/{postID}/{employeeID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "employeeID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

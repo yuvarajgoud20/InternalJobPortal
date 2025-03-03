@@ -8,6 +8,7 @@ public partial class InternalJobPortalDBContext : DbContext
 {
     public InternalJobPortalDBContext()
     {
+
     }
 
     public InternalJobPortalDBContext(DbContextOptions<InternalJobPortalDBContext> options)

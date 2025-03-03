@@ -1,4 +1,6 @@
 
+using InternalJobPortalLibrary.Repos;
+
 namespace InternalJobPortalWebAPI
 {
     public class Program
@@ -13,6 +15,7 @@ namespace InternalJobPortalWebAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IApplyJobRepo, EFApplyJobRepo>();
 
             var app = builder.Build();
 
