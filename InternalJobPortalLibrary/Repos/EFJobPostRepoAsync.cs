@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JobPostLibrary.Models;
+using JobPostLibrary.Repos;
+
 using Microsoft.EntityFrameworkCore;
+using InternalJobPortalLibrary.Models;
+using InternalJobPortalLibrary;
 
 
 namespace JobPostLibrary.Repos
@@ -13,17 +16,14 @@ namespace JobPostLibrary.Repos
     {
         InternalJobPortalDBContext ctx = new InternalJobPortalDBContext();
 
-       
-
+        public async Task AddJobPostAsync(JobPost jobPost)
+        {
+            await ctx.JobPosts.AddAsync(jobPost);
+            await ctx.SaveChangesAsync();
+        }
       
-           
-            public async Task AddJobPostAsync(JobPost jobPost)
-            {
-                await ctx.JobPosts.AddAsync(jobPost);
-                await ctx.SaveChangesAsync();
-            }
 
-            public async Task DeleteJobPostAsync(int postId)
+        public async Task DeleteJobPostAsync(int postId)
             {
                 JobPost jp2d = await GetJobPostAsync(postId);
                 ctx.JobPosts.Remove(jp2d);
@@ -59,7 +59,9 @@ namespace JobPostLibrary.Repos
 
                 await ctx.SaveChangesAsync();
             }
-        }
+
+        
+    }
     }
 
 

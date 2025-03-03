@@ -31,7 +31,7 @@ namespace InternalJobPortalWebApi.Controllers
                 return Ok(employee);
 
             }
-            catch (EmployeeException ex)
+            catch (InternalJobPortalException ex)
             {
                 return NotFound(ex.Message);
             }
@@ -44,7 +44,7 @@ namespace InternalJobPortalWebApi.Controllers
                 await empRepo.InsertEmployeeAsync(employee);
                 return Created($"api/Employee/{employee.EmployeeID}", employee);
             }
-            catch (EmployeeException ex)
+            catch (InternalJobPortalException ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -58,7 +58,7 @@ namespace InternalJobPortalWebApi.Controllers
                 return Ok(employee);
 
             }
-            catch (EmployeeException ex)
+            catch (InternalJobPortalException ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -73,7 +73,7 @@ namespace InternalJobPortalWebApi.Controllers
 
 
             }
-            catch (EmployeeException ex)
+            catch (InternalJobPortalException ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -89,7 +89,7 @@ namespace InternalJobPortalWebApi.Controllers
                 return Ok(jobPosts);
             }
 
-            catch (EmployeeException ex)
+            catch (InternalJobPortalException ex)
             {
 
                 return NotFound(ex.Message);

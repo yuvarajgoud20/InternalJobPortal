@@ -28,3 +28,18 @@ C:\DotNet Training\FinalProject\InternalJobPortal\InternalJobPortalLibrary\bin\D
 C:\DotNet Training\FinalProject\InternalJobPortal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.pdb
 C:\DotNet Training\FinalProject\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.genruntimeconfig.cache
 C:\DotNet Training\FinalProject\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\ref\InternalJobPortalLibrary.dll
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.csproj.AssemblyReference.cache
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.AssemblyInfoInputs.cache
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.AssemblyInfo.cs
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.csproj.CoreCompileInputs.cache
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.sourcelink.json
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.dll
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\refint\InternalJobPortalLibrary.dll
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.pdb
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.deps.json
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.runtimeconfig.json
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.dll
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.pdb
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.genruntimeconfig.cache
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\ref\InternalJobPortalLibrary.dll

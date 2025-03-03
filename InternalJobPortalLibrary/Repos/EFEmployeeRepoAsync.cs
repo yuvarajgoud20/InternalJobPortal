@@ -37,7 +37,7 @@ namespace InternalJobPortalLibrary.Repos
             }
             catch (Exception ex)
             {
-                throw new EmployeeException("No Such Employee Id");
+                throw new InternalJobPortalException("No Such Employee Id");
             }
 
         }

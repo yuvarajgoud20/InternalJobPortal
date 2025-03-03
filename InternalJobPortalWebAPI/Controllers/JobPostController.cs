@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using JobPostLibrary.Models;
+﻿using InternalJobPortalLibrary;
+using InternalJobPortalLibrary.Models;
 using JobPostLibrary.Repos;
-using Microsoft.AspNetCore.Authorization;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using JobPostLibrary;
+using Microsoft.AspNetCore.Mvc;
 
 namespace JobPostWebAPI.Controllers
 {

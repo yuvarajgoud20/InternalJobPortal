@@ -15,7 +15,7 @@ public partial class JobPost
 
     public int? NoOfVacancies { get; set; }
 
-    public virtual ICollection<ApplyJob> ApplyJobs { get; set; } = new List<ApplyJob>();
+    public virtual ICollection<ApplyJob>? ApplyJobs { get; set; } = new List<ApplyJob>();
 
     public virtual Job? Job { get; set; }
 }

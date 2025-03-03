@@ -25,7 +25,7 @@ namespace InternalJobPortalWebApi.Controllers
             }
             catch (Exception ex)
             {
-                return NotFound(ex.InnerException.Message);
+                return NotFound(ex.Message);
             }
 
         }
@@ -39,7 +39,7 @@ namespace InternalJobPortalWebApi.Controllers
             }
             catch (Exception ex)
             {
-                return NotFound(ex.InnerException.Message);
+                return NotFound(ex.Message);
             }
         }
 
@@ -67,7 +67,7 @@ namespace InternalJobPortalWebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.InnerException.Message);
+                return BadRequest(ex.Message);
             }
         }
 
@@ -81,7 +81,7 @@ namespace InternalJobPortalWebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.InnerException.Message);
+                return BadRequest(ex.Message);
             }
         }
     }
