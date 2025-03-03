@@ -94,6 +94,401 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.EmployeeController",
+    "Method": "GetAll",
+    "RelativePath": "api/Employee",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.EmployeeController",
+    "Method": "Insert",
+    "RelativePath": "api/Employee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employee",
+        "Type": "InternalJobPortalLibrary.Models.Employee",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.EmployeeController",
+    "Method": "GetOne",
+    "RelativePath": "api/Employee/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.EmployeeController",
+    "Method": "Update",
+    "RelativePath": "api/Employee/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "employee",
+        "Type": "InternalJobPortalLibrary.Models.Employee",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.EmployeeController",
+    "Method": "Delete",
+    "RelativePath": "api/Employee/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.EmployeeController",
+    "Method": "GetByJobId",
+    "RelativePath": "api/Employee/Employee/ByJobId/{JobID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "JobID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.EmployeeSkillController",
+    "Method": "GetAll",
+    "RelativePath": "api/EmployeeSkill",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.EmployeeSkillController",
+    "Method": "Insert",
+    "RelativePath": "api/EmployeeSkill",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "empSkill",
+        "Type": "InternalJobPortalLibrary.Models.EmployeeSkill",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.EmployeeSkillController",
+    "Method": "GetOne",
+    "RelativePath": "api/EmployeeSkill/{empID}/{skillID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "empID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "skillID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.EmployeeSkillController",
+    "Method": "Update",
+    "RelativePath": "api/EmployeeSkill/{empID}/{skillID}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "empID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "skillID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "empSkill",
+        "Type": "InternalJobPortalLibrary.Models.EmployeeSkill",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.EmployeeSkillController",
+    "Method": "Delete",
+    "RelativePath": "api/EmployeeSkill/{empID}/{skillID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "empID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "skillID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.EmployeeSkillController",
+    "Method": "GetByEmployeeID",
+    "RelativePath": "api/EmployeeSkill/ByEmployeeID/{empID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "empID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.EmployeeSkillController",
+    "Method": "GetBySkillID",
+    "RelativePath": "api/EmployeeSkill/BySkillID/{skillID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "skillID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.JobController",
+    "Method": "GetAll",
+    "RelativePath": "api/Job",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.JobController",
+    "Method": "Insert",
+    "RelativePath": "api/Job",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "job",
+        "Type": "InternalJobPortalLibrary.Models.Job",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.JobController",
+    "Method": "Update",
+    "RelativePath": "api/Job/{jid}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "jid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "job",
+        "Type": "InternalJobPortalLibrary.Models.Job",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.JobController",
+    "Method": "Delete",
+    "RelativePath": "api/Job/{jid}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "jid",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.JobController",
+    "Method": "Getone",
+    "RelativePath": "api/Job/jid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "jid",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobPostWebAPI.Controllers.JobPostController",
+    "Method": "GetAll",
+    "RelativePath": "api/JobPost",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobPostWebAPI.Controllers.JobPostController",
+    "Method": "Insert",
+    "RelativePath": "api/JobPost",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "jobPost",
+        "Type": "InternalJobPortalLibrary.Models.JobPost",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobPostWebAPI.Controllers.JobPostController",
+    "Method": "GetOne",
+    "RelativePath": "api/JobPost/{postId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobPostWebAPI.Controllers.JobPostController",
+    "Method": "Update",
+    "RelativePath": "api/JobPost/{postId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "jobPost",
+        "Type": "InternalJobPortalLibrary.Models.JobPost",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobPostWebAPI.Controllers.JobPostController",
+    "Method": "Delete",
+    "RelativePath": "api/JobPost/{postId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "JobPostWebAPI.Controllers.JobPostController",
+    "Method": "GetByJobId",
+    "RelativePath": "api/JobPost/ByJobId/{jobId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "jobId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InternalJobPortalWebAPI.Controllers.JobSkillController",
     "Method": "GetAll",
     "RelativePath": "api/JobSkill",
@@ -214,6 +609,85 @@
       {
         "Name": "skillID",
         "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.SkillController",
+    "Method": "GetAll",
+    "RelativePath": "api/Skill",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.SkillController",
+    "Method": "Insert",
+    "RelativePath": "api/Skill",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "skill",
+        "Type": "InternalJobPortalLibrary.Models.Skill",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.SkillController",
+    "Method": "Delete",
+    "RelativePath": "api/Skill",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sid",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.SkillController",
+    "Method": "Getone",
+    "RelativePath": "api/Skill/{sid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sid",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.SkillController",
+    "Method": "Update",
+    "RelativePath": "api/Skill/{sid}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "skill",
+        "Type": "InternalJobPortalLibrary.Models.Skill",
         "IsRequired": true
       }
     ],

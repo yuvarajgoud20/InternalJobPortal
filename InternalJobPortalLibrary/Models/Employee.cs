@@ -17,9 +17,9 @@ public partial class Employee
 
     public string? JobID { get; set; }
 
-    public virtual ICollection<ApplyJob> ApplyJobs { get; set; } = new List<ApplyJob>();
+    public virtual ICollection<ApplyJob>? ApplyJobs { get; set; } = new List<ApplyJob>();
 
-    public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; } = new List<EmployeeSkill>();
+    public virtual ICollection<EmployeeSkill>? EmployeeSkills { get; set; } = new List<EmployeeSkill>();
 
     public virtual Job? Job { get; set; }
 }

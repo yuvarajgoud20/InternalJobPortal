@@ -11,7 +11,7 @@ public partial class EmployeeSkill
 
     public int? SkillExperience { get; set; }
 
-    public virtual Employee Employee { get; set; } = null!;
+    public virtual Employee? Employee { get; set; } = null!;
 
-    public virtual Skill Skill { get; set; } = null!;
+    public virtual Skill? Skill { get; set; } = null!;
 }

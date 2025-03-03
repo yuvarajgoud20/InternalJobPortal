@@ -13,9 +13,9 @@ public partial class Job
 
     public decimal? Salary { get; set; }
 
-    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
+    public virtual ICollection<Employee>? Employees { get; set; } = new List<Employee>();
 
-    public virtual ICollection<JobPost> JobPosts { get; set; } = new List<JobPost>();
+    public virtual ICollection<JobPost>? JobPosts { get; set; } = new List<JobPost>();
 
-    public virtual ICollection<JobSkill> JobSkills { get; set; } = new List<JobSkill>();
+    public virtual ICollection<JobSkill>? JobSkills { get; set; } = new List<JobSkill>();
 }
