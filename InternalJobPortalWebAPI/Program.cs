@@ -16,7 +16,7 @@ namespace InternalJobPortalWebAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<IApplyJobRepo, EFApplyJobRepo>();
-
+            builder.Services.AddScoped<IJobSkillRepoAsync, EFJobSkillRepoAsync>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
