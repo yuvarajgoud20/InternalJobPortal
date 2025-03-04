@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ZelisDot.Net\\Yuvi_Anna\\InternalJobPortal\\InternalJobPortalWebAPI\\InternalJobPortalWebAPI.csproj": {}
+    "C:\\.Net Training\\Final Project\\InternalJobPortal\\InternalJobPortalWebAPI\\InternalJobPortalWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\ZelisDot.Net\\Yuvi_Anna\\InternalJobPortal\\InternalJobPortalLibrary\\InternalJobPortalLibrary.csproj": {
+    "C:\\.Net Training\\Final Project\\InternalJobPortal\\InternalJobPortalLibrary\\InternalJobPortalLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ZelisDot.Net\\Yuvi_Anna\\InternalJobPortal\\InternalJobPortalLibrary\\InternalJobPortalLibrary.csproj",
+        "projectUniqueName": "C:\\.Net Training\\Final Project\\InternalJobPortal\\InternalJobPortalLibrary\\InternalJobPortalLibrary.csproj",
         "projectName": "InternalJobPortalLibrary",
-        "projectPath": "C:\\ZelisDot.Net\\Yuvi_Anna\\InternalJobPortal\\InternalJobPortalLibrary\\InternalJobPortalLibrary.csproj",
-        "packagesPath": "C:\\Users\\AS017534\\.nuget\\packages\\",
-        "outputPath": "C:\\ZelisDot.Net\\Yuvi_Anna\\InternalJobPortal\\InternalJobPortalLibrary\\obj\\",
+        "projectPath": "C:\\.Net Training\\Final Project\\InternalJobPortal\\InternalJobPortalLibrary\\InternalJobPortalLibrary.csproj",
+        "packagesPath": "C:\\Users\\SN017548\\.nuget\\packages\\",
+        "outputPath": "C:\\.Net Training\\Final Project\\InternalJobPortal\\InternalJobPortalLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\AS017534\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SN017548\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -81,20 +81,20 @@
         }
       }
     },
-    "C:\\ZelisDot.Net\\Yuvi_Anna\\InternalJobPortal\\InternalJobPortalWebAPI\\InternalJobPortalWebAPI.csproj": {
+    "C:\\.Net Training\\Final Project\\InternalJobPortal\\InternalJobPortalWebAPI\\InternalJobPortalWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ZelisDot.Net\\Yuvi_Anna\\InternalJobPortal\\InternalJobPortalWebAPI\\InternalJobPortalWebAPI.csproj",
+        "projectUniqueName": "C:\\.Net Training\\Final Project\\InternalJobPortal\\InternalJobPortalWebAPI\\InternalJobPortalWebAPI.csproj",
         "projectName": "InternalJobPortalWebAPI",
-        "projectPath": "C:\\ZelisDot.Net\\Yuvi_Anna\\InternalJobPortal\\InternalJobPortalWebAPI\\InternalJobPortalWebAPI.csproj",
-        "packagesPath": "C:\\Users\\AS017534\\.nuget\\packages\\",
-        "outputPath": "C:\\ZelisDot.Net\\Yuvi_Anna\\InternalJobPortal\\InternalJobPortalWebAPI\\obj\\",
+        "projectPath": "C:\\.Net Training\\Final Project\\InternalJobPortal\\InternalJobPortalWebAPI\\InternalJobPortalWebAPI.csproj",
+        "packagesPath": "C:\\Users\\SN017548\\.nuget\\packages\\",
+        "outputPath": "C:\\.Net Training\\Final Project\\InternalJobPortal\\InternalJobPortalWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\AS017534\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SN017548\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -109,8 +109,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\ZelisDot.Net\\Yuvi_Anna\\InternalJobPortal\\InternalJobPortalLibrary\\InternalJobPortalLibrary.csproj": {
-                "projectPath": "C:\\ZelisDot.Net\\Yuvi_Anna\\InternalJobPortal\\InternalJobPortalLibrary\\InternalJobPortalLibrary.csproj"
+              "C:\\.Net Training\\Final Project\\InternalJobPortal\\InternalJobPortalLibrary\\InternalJobPortalLibrary.csproj": {
+                "projectPath": "C:\\.Net Training\\Final Project\\InternalJobPortal\\InternalJobPortalLibrary\\InternalJobPortalLibrary.csproj"
               }
             }
           }

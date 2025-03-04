@@ -1,0 +1,43 @@
+﻿@model IEnumerable<InternalJobPortalMVC.Models.EmployeeSkill>
+
+@{
+    ViewData["Title"] = "BySkillId";
+}
+
+<h1>BySkillId</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillExperience)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillExperience)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>

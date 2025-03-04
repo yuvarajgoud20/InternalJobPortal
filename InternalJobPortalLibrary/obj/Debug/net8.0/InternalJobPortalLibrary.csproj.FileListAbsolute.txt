@@ -43,3 +43,18 @@ C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\bin\Debug\n
 C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.pdb
 C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.genruntimeconfig.cache
 C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\ref\InternalJobPortalLibrary.dll
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.deps.json
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.runtimeconfig.json
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.dll
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\bin\Debug\net8.0\InternalJobPortalLibrary.pdb
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.csproj.AssemblyReference.cache
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.AssemblyInfoInputs.cache
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.AssemblyInfo.cs
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.csproj.CoreCompileInputs.cache
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.sourcelink.json
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.dll
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\refint\InternalJobPortalLibrary.dll
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.pdb
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\InternalJobPortalLibrary.genruntimeconfig.cache
+C:\.Net Training\Final Project\InternalJobPortal\InternalJobPortalLibrary\obj\Debug\net8.0\ref\InternalJobPortalLibrary.dll
