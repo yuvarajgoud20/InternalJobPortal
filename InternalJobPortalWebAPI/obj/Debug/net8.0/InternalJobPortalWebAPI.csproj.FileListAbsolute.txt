@@ -250,3 +250,4 @@ C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalWebAPI\obj\Debug\ne
 C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalWebAPI\obj\Debug\net8.0\Internal.3306AC05.Up2Date
 C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalWebAPI\obj\Debug\net8.0\InternalJobPortalWebAPI.genruntimeconfig.cache
 C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalWebAPI\obj\Debug\net8.0\ref\InternalJobPortalWebAPI.dll
+C:\ZelisDot.Net\Yuvi_Anna\InternalJobPortal\InternalJobPortalWebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
