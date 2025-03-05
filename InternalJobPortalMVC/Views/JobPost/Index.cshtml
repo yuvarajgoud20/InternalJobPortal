@@ -1,0 +1,61 @@
+﻿@model IEnumerable<InternalJobPortalMVC.Models.JobPost>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PostID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfPosting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastDateToApply)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoOfVacancies)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfPosting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastDateToApply)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfVacancies)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { postID=item.PostID  }) |
+                    @Html.ActionLink("Details", "Details", new { postID = item.PostID }) |
+                    @Html.ActionLink("Delete", "Delete", new { postID = item.PostID }) |
+                    @Html.ActionLink("ByJobId", "ByJobId", new { jobId = item.JobID }) |
+                    @Html.ActionLink("Applications", "ApplicationIndex", new { postID = item.PostID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -4,3 +4,13 @@ C:\DotNet_Training\Internal Job Portal\InternalJobPortalDB\bin\Debug\InternalJob
 C:\DotNet_Training\Internal Job Portal\InternalJobPortalDB\obj\Debug\InternalJobPortalDB.sqlproj.AssemblyReference.cache
 C:\DotNet_Training\Internal Job Portal\InternalJobPortalDB\obj\Debug\InternalJobPortalDB.dll
 C:\DotNet_Training\Internal Job Portal\InternalJobPortalDB\obj\Debug\InternalJobPortalDB.pdb
+C:\DotNet_Training\InternalJobPortal\InternalJobPortalDB\bin\Debug\InternalJobPortalDB.dacpac
+C:\DotNet_Training\InternalJobPortal\InternalJobPortalDB\bin\Debug\InternalJobPortalDB.dll
+C:\DotNet_Training\InternalJobPortal\InternalJobPortalDB\bin\Debug\InternalJobPortalDB.pdb
+C:\DotNet_Training\InternalJobPortal\InternalJobPortalDB\obj\Debug\InternalJobPortalDB.sqlproj.AssemblyReference.cache
+C:\DotNet_Training\InternalJobPortal\InternalJobPortalDB\obj\Debug\Model.xml
+C:\DotNet_Training\InternalJobPortal\InternalJobPortalDB\obj\Debug\refactor.xml
+C:\DotNet_Training\InternalJobPortal\InternalJobPortalDB\obj\Debug\postdeploy.sql
+C:\DotNet_Training\InternalJobPortal\InternalJobPortalDB\obj\Debug\predeploy.sql
+C:\DotNet_Training\InternalJobPortal\InternalJobPortalDB\obj\Debug\InternalJobPortalDB.dll
+C:\DotNet_Training\InternalJobPortal\InternalJobPortalDB\obj\Debug\InternalJobPortalDB.pdb

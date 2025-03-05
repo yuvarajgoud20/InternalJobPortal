@@ -18,16 +18,29 @@ namespace JobPostLibrary.Repos
 
         public async Task AddJobPostAsync(JobPost jobPost)
         {
-            await ctx.JobPosts.AddAsync(jobPost);
-            await ctx.SaveChangesAsync();
+            try
+            {
+                await ctx.JobPosts.AddAsync(jobPost);
+                await ctx.SaveChangesAsync();
+            }
+            catch(Exception ex){
+                throw new InternalJobPortalException(ex.InnerException.Message);
+            }
         }
       
 
         public async Task DeleteJobPostAsync(int postId)
             {
-                JobPost jp2d = await GetJobPostAsync(postId);
-                ctx.JobPosts.Remove(jp2d);
-                await ctx.SaveChangesAsync();
+                try
+                {
+                    JobPost jp2d = await GetJobPostAsync(postId);
+                    ctx.JobPosts.Remove(jp2d);
+                    await ctx.SaveChangesAsync();
+                }
+                catch
+                {
+                    throw new InternalJobPortalException("No such PostId");
+                }
             }
 
             public async Task<List<JobPost>> GetAllJobPostsAsync()
@@ -37,12 +50,15 @@ namespace JobPostLibrary.Repos
 
             public async Task<JobPost> GetJobPostAsync(int postId)
             {
-                JobPost jp = await ctx.JobPosts.FindAsync(postId);
-                if (jp==null)
+                try
+                {
+                    JobPost jp = await ctx.JobPosts.FindAsync(postId);
+                    return jp;
+                }
+                catch
                 {
                     throw new InternalJobPortalException("Invalid Job Post ID");
                 }
-                return jp;
             }
 
             public async Task<List<JobPost>> GetJobPostsByJobIdAsync(string jobId)
@@ -52,16 +68,21 @@ namespace JobPostLibrary.Repos
 
             public async Task UpdateJobPostAsync(int postId, JobPost jobPost)
             {
-                JobPost jp2edit = await GetJobPostAsync(postId);
-                jp2edit.DateOfPosting = jobPost.DateOfPosting;
-                jp2edit.LastDateToApply = jobPost.LastDateToApply;
-                jp2edit.NoOfVacancies = jobPost.NoOfVacancies;
+                try
+                {
+                    JobPost jp2edit = await GetJobPostAsync(postId);
+                    jp2edit.DateOfPosting = jobPost.DateOfPosting;
+                    jp2edit.LastDateToApply = jobPost.LastDateToApply;
+                    jp2edit.NoOfVacancies = jobPost.NoOfVacancies;
 
-                await ctx.SaveChangesAsync();
+                    await ctx.SaveChangesAsync();
+                }
+                catch
+                {
+                    throw new InternalJobPortalException("No such PostId");
+                }
             }
-
-        
-    }
+        }
     }
 
 

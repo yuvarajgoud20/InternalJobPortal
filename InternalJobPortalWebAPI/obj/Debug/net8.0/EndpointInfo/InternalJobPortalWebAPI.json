@@ -154,6 +154,29 @@
         }
       }
     },
+    "/api/Application/ByPostId/{postID}": {
+      "get": {
+        "tags": [
+          "Application"
+        ],
+        "parameters": [
+          {
+            "name": "postID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Auth/{userName}/{role}/{secretKey}": {
       "get": {
         "tags": [
@@ -584,7 +607,7 @@
         }
       }
     },
-    "/api/Job/jid": {
+    "/api/Job/{jid}": {
       "get": {
         "tags": [
           "Job"
@@ -592,7 +615,8 @@
         "parameters": [
           {
             "name": "jid",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -603,9 +627,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/Job/{jid}": {
+      },
       "put": {
         "tags": [
           "Job"
@@ -1042,25 +1064,6 @@
             "description": "OK"
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Skill"
-        ],
-        "parameters": [
-          {
-            "name": "sid",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
     "/api/Skill/{sid}": {
@@ -1117,6 +1120,26 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Skill"
+        ],
+        "parameters": [
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

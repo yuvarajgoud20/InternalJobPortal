@@ -74,5 +74,18 @@ namespace InternalJobPortalWebAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("ByPostId/{postID}")]
+        public async Task<ActionResult> ByPostId(int postID)
+        {
+            try
+            {
+                List<ApplyJob> applyJobs = await applyJobRepo.GetApplyJobsByPostID(postID);
+                return Ok(applyJobs);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

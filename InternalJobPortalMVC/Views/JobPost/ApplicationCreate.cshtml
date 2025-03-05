@@ -1,0 +1,48 @@
+﻿@model InternalJobPortalMVC.Models.ApplyJob
+
+@{
+    ViewData["Title"] = "ApplicationCreate";
+}
+
+<h1>ApplicationCreate</h1>
+
+<h4>ApplyJob</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ApplicationCreate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PostID" class="control-label"></label>
+                <input asp-for="PostID" class="form-control" />
+                <span asp-validation-for="PostID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeID" class="control-label"></label>
+                <input asp-for="EmployeeID" class="form-control" />
+                <span asp-validation-for="EmployeeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AppliedDate" class="control-label"></label>
+                <input asp-for="AppliedDate" class="form-control" />
+                <span asp-validation-for="AppliedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationStatus" class="control-label"></label>
+                <input asp-for="ApplicationStatus" class="form-control" />
+                <span asp-validation-for="ApplicationStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Applications", "ApplicationIndex", new { postID = Model.PostID })
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

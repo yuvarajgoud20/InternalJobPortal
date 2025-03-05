@@ -71,7 +71,7 @@ namespace InternalJobPortalWebApi.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{sid}")]
         public async Task<ActionResult> Delete(string sid)
         {
             try

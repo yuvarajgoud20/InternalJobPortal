@@ -1,0 +1,66 @@
+﻿@model IEnumerable<InternalJobPortalMVC.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalExperience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalExperience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeID  }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID }) |
+                    @Html.ActionLink("EmployeeSkills", "EmployeeSkillIndex", new { id = item.EmployeeID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

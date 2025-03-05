@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Employee] (
     [EmployeeID]      CHAR (6)     NOT NULL,
     [EmployeeName]    VARCHAR (30) NULL,
-    [EmailID]         VARCHAR (20) NULL,
+    [EmailID]         VARCHAR (40) NULL,
     [PhoneNo]         CHAR (10)    NULL,
     [TotalExperience] INT          NULL,
     [JobID]           CHAR (6)     NULL,

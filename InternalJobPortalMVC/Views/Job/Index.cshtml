@@ -1,0 +1,54 @@
+﻿@model IEnumerable<InternalJobPortalMVC.Models.Job>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.JobID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { jid = item.JobID}) |
+                    @Html.ActionLink("Details", "Details", new { jid = item.JobID }) |
+                    @Html.ActionLink("Delete", "Delete", new { jid = item.JobID }) |
+                    @Html.ActionLink("Job Skills", "JobSkillByJobID", new { jobID = item.JobID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

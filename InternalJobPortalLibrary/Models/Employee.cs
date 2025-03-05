@@ -5,7 +5,7 @@ namespace InternalJobPortalLibrary.Models;
 
 public partial class Employee
 {
-    public string EmployeeID { get; set; } = null!;
+    public string EmployeeID { get; set; } 
 
     public string? EmployeeName { get; set; }
 

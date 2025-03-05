@@ -1,0 +1,53 @@
+﻿@model InternalJobPortalMVC.Models.JobPost
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>JobPost</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PostID" class="control-label"></label>
+                <input asp-for="PostID" class="form-control" />
+                <span asp-validation-for="PostID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobID" class="control-label"></label>
+                <input asp-for="JobID" class="form-control" />
+                <span asp-validation-for="JobID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfPosting" class="control-label"></label>
+                <input asp-for="DateOfPosting" class="form-control" />
+                <span asp-validation-for="DateOfPosting" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastDateToApply" class="control-label"></label>
+                <input asp-for="LastDateToApply" class="form-control" />
+                <span asp-validation-for="LastDateToApply" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoOfVacancies" class="control-label"></label>
+                <input asp-for="NoOfVacancies" class="form-control" />
+                <span asp-validation-for="NoOfVacancies" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -44,8 +44,15 @@ namespace InternalJobPortalLibrary.Repos
 
         public async Task InsertEmployeeAsync(Employee employee)
         {
-            await ctx.Employees.AddAsync(employee);
-           await ctx.SaveChangesAsync();
+            try
+            {
+                await ctx.Employees.AddAsync(employee);
+                await ctx.SaveChangesAsync();
+            }
+           catch(Exception ex)
+            {
+                throw new InternalJobPortalException(ex.InnerException.Message);
+            }
 
         }
 

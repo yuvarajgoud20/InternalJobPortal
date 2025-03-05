@@ -30,7 +30,7 @@ namespace InternalJobPortalWebApi.Controllers
             }
 
         }
-        [HttpGet("jid")] //This attribute specifies that the Getone method will be called when an HTTP GET request is made to the specified route.
+        [HttpGet("{jid}")] //This attribute specifies that the Getone method will be called when an HTTP GET request is made to the specified route.
         public async Task<ActionResult> Getone(string jid) //This method returns a specific job based on the job ID.
         {
             try

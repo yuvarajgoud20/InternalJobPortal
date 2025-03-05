@@ -94,6 +94,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "InternalJobPortalWebAPI.Controllers.ApplicationController",
+    "Method": "ByPostId",
+    "RelativePath": "api/Application/ByPostId/{postID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AirlinesWebApi.Controllers.AuthController",
     "Method": "GetToken",
     "RelativePath": "api/Auth/{userName}/{role}/{secretKey}",
@@ -378,6 +394,22 @@
   },
   {
     "ContainingType": "InternalJobPortalWebApi.Controllers.JobController",
+    "Method": "Getone",
+    "RelativePath": "api/Job/{jid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "jid",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.JobController",
     "Method": "Update",
     "RelativePath": "api/Job/{jid}",
     "HttpMethod": "PUT",
@@ -409,22 +441,6 @@
         "Name": "jid",
         "Type": "System.String",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "InternalJobPortalWebApi.Controllers.JobController",
-    "Method": "Getone",
-    "RelativePath": "api/Job/jid",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "jid",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -678,22 +694,6 @@
   },
   {
     "ContainingType": "InternalJobPortalWebApi.Controllers.SkillController",
-    "Method": "Delete",
-    "RelativePath": "api/Skill",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "sid",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "InternalJobPortalWebApi.Controllers.SkillController",
     "Method": "Getone",
     "RelativePath": "api/Skill/{sid}",
     "HttpMethod": "GET",
@@ -724,6 +724,22 @@
       {
         "Name": "skill",
         "Type": "InternalJobPortalLibrary.Models.Skill",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.SkillController",
+    "Method": "Delete",
+    "RelativePath": "api/Skill/{sid}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sid",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
