@@ -81,8 +81,8 @@ namespace InternalJobPortalWebAPI
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidIssuer = "https://www.manipreethi.com",
-                    ValidAudience = "https://www.manipreethi.com",
+                    ValidIssuer = "https://www.snrao.com",
+                    ValidAudience = "https://www.snrao.com",
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Johny Johny yes papa....open your laptop HAHAHA!!!"))
                 };
             });

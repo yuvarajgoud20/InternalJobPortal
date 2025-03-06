@@ -20,8 +20,8 @@ namespace AirlinesWebApi.Controllers
                 new Claim(ClaimTypes.Role, role)
             };
             var token = new JwtSecurityToken(
-                issuer: "https://www.manipreethi.com",
-                audience: "https://www.manipreethi.com",
+                issuer: "https://www.snrao.com",
+                audience: "https://www.snrao.com",
                 expires: DateTime.Now.AddHours(2),
                 signingCredentials: credentials,
                 claims: claims

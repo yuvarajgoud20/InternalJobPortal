@@ -10,7 +10,7 @@ namespace InternalJobPortalWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class JobController : ControllerBase
     {
         readonly IJobRepoAsync jobRepo;     //Declares a readonly field of type

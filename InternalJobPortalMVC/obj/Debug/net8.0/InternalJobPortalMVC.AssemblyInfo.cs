@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InternalJobPortalMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec49942fff08fcee20581f303ea3f698b9a60182")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b63dee1cc1f73e38f2830081d5460404748f7c60")]
 [assembly: System.Reflection.AssemblyProductAttribute("InternalJobPortalMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InternalJobPortalMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
