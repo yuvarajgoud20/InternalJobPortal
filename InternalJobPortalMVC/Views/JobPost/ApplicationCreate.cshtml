@@ -1,4 +1,5 @@
-﻿@model InternalJobPortalMVC.Models.ApplyJob
+﻿@using InternalJobPortalMvc.Models
+@model InternalJobPortalMVC.Models.ApplyJob
 
 @{
     ViewData["Title"] = "ApplicationCreate";
@@ -19,7 +20,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="EmployeeID" class="control-label"></label>
-                <input asp-for="EmployeeID" class="form-control" />
+                @* <input asp-for="EmployeeID" class="form-control" /> *@
+                @Html.DropDownListFor(Model => Model.EmployeeID, await ForeignKeyHelper.GetEmployeeIds())
                 <span asp-validation-for="EmployeeID" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -7,7 +7,8 @@
 <h1>EmployeeSkillIndex</h1>
 
 <p>
-    <a asp-action="EmployeeSkillCreate">Create New</a>
+    @* <a asp-action="EmployeeSkillCreate">Create New</a> *@
+    @Html.ActionLink("Create new", "EmployeeSkillCreate", new { id = ViewData["id"] })
 </p>
 <table class="table">
     <thead>

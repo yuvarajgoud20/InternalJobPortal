@@ -116,6 +116,7 @@ public class JobController : Controller
         //string token = await client2.GetStringAsync("http://localhost:5227/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
         //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         List<JobSkill> jobSkills = await client3.GetFromJsonAsync<List<JobSkill>>("ByJobID/"+jobID);
+        ViewData["jobID"] = jobID;
         return View(jobSkills);
     }
 
@@ -128,9 +129,10 @@ public class JobController : Controller
     }
 
     // GET: JobSkillController/Create
-    public ActionResult CreateJobSkill()
+    public ActionResult CreateJobSkill(string jobID)
     {
         JobSkill jobSkill = new JobSkill();
+        jobSkill.JobID = jobID;
         return View(jobSkill);
     }
 
@@ -203,6 +205,7 @@ public class JobController : Controller
     public async Task<ActionResult> JobSkillByJobID(string jobID)
     {
         List<JobSkill> jobSkillsByJobID = await client3.GetFromJsonAsync<List<JobSkill>>("" + "ByJobID/" + jobID);
+        ViewData["jobID"] = jobID;
         return View(jobSkillsByJobID);
     }
 

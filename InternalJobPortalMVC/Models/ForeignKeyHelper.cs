@@ -1,0 +1,64 @@
+﻿using InternalJobPortalMVC.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace InternalJobPortalMvc.Models
+{
+    public class ForeignKeyHelper
+    {
+        public async static Task<List<SelectListItem>> GetEmployeeIds()
+        {
+            HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Employee/") };
+
+            List<Employee> employees = await client.GetFromJsonAsync<List<Employee>>("");
+            List<SelectListItem> empIds = employees.Select(emp => new SelectListItem
+            {
+                Text = emp.EmployeeID, // Assuming Employee has a Name property
+                Value = emp.EmployeeID.ToString()
+            }).ToList();
+
+            return empIds;
+        }
+
+        public async static Task<List<SelectListItem>> GetSkillIds()
+        {
+            HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Skill/") };
+
+            List<Skill> skills = await client.GetFromJsonAsync<List<Skill>>("");
+            List<SelectListItem> skillIds = skills.Select(skill => new SelectListItem
+            {
+                Text = skill.SkillName, // Assuming Employee has a Name property
+                Value = skill.SkillID.ToString()
+            }).ToList();
+
+            return skillIds;
+        }
+
+        public async static Task<List<SelectListItem>> GetJobIds()
+        {
+            HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Job/") };
+
+            List<Job> jobs = await client.GetFromJsonAsync<List<Job>>("");
+            List<SelectListItem> jobIds = jobs.Select(job => new SelectListItem
+            {
+                Text = job.JobTitle, // Assuming Employee has a Name property
+                Value = job.JobID.ToString()
+            }).ToList();
+
+            return jobIds;
+        }
+
+        public async static Task<List<SelectListItem>> GetPostIds()
+        {
+            HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/JobPost/") };
+
+            List<JobPost> posts = await client.GetFromJsonAsync<List<JobPost>>("");
+            List<SelectListItem> postIds = posts.Select(post => new SelectListItem
+            {
+                Text = post.PostID.ToString(), // Assuming Employee has a Name property
+                Value = post.PostID.ToString()
+            }).ToList();
+
+            return postIds;
+        }
+    }
+}

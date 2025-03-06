@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using InternalJobPortalMVC.Data;
+using InternalJobPortalMVC.Filters;
 
 namespace InternalJobPortalMVC;
 
@@ -9,6 +10,11 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddControllersWithViews(config =>
+        {
+            config.Filters.Add(typeof(CustomExceptionFilter));
+        });
 
         // Add services to the container.
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");

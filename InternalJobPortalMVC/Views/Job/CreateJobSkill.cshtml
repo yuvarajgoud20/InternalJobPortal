@@ -1,4 +1,5 @@
-﻿@model InternalJobPortalMVC.Models.JobSkill
+﻿@using InternalJobPortalMvc.Models
+@model InternalJobPortalMVC.Models.JobSkill
 
 @{
     ViewData["Title"] = "CreateJobSkill";
@@ -14,12 +15,14 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="JobID" class="control-label"></label>
-                <input asp-for="JobID" class="form-control" />
+                 <input asp-for="JobID" class="form-control" /> 
+                @* @Html.DropDownListFor(Model => Model.JobID, await ForeignKeyHelper.GetJobIds()) *@
                 <span asp-validation-for="JobID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SkillID" class="control-label"></label>
-                <input asp-for="SkillID" class="form-control" />
+                @* <input asp-for="SkillID" class="form-control" /> *@
+                @Html.DropDownListFor(Model => Model.SkillID, await ForeignKeyHelper.GetSkillIds())
                 <span asp-validation-for="SkillID" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -119,6 +119,7 @@ namespace InternalJobPortalMVC.Controllers
         public async Task<ActionResult> EmployeeSkillIndex(string id)
         {
             List<EmployeeSkill> empSkills = await client2.GetFromJsonAsync<List<EmployeeSkill>>("ByEmployeeID/"+id);
+            ViewData["id"] = id;
             return View(empSkills);
         }
 
@@ -132,9 +133,10 @@ namespace InternalJobPortalMVC.Controllers
 
         // GET: EmployeeSkillController/Create
         [Route("EmployeeSkill/Create")]
-        public ActionResult EmployeeSkillCreate()
+        public ActionResult EmployeeSkillCreate(string id)
         {
             EmployeeSkill es = new EmployeeSkill();
+            es.EmployeeID = id;
             return View(es);
         }
 

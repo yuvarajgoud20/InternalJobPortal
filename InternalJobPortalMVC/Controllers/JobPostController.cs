@@ -154,6 +154,7 @@ namespace InternalJobPortalMVC.Controllers
             //List<ApplyJob> jobs = await client3.GetFromJsonAsync<List<ApplyJob>>("ByPostID/"+postID);
             //return View(jobs);
             List<ApplyJob> applyJobs = await client3.GetFromJsonAsync<List<ApplyJob>>($"ByPostId/{postID}");
+            ViewData["postID"] = postID;
             return View( applyJobs);
 
         }
@@ -170,9 +171,10 @@ namespace InternalJobPortalMVC.Controllers
         }
         
         // GET: JobPostController/Create
-        public ActionResult ApplicationCreate()
+        public ActionResult ApplicationCreate(int postID)
         {
             ApplyJob job = new ApplyJob();
+            job.PostID = postID;
             return View(job);
         }
 
