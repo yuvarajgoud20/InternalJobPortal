@@ -18,7 +18,49 @@ namespace InternalJobPortalWebAPI
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(options => {
+
+                options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+
+                {
+
+                    Name = "Authorization",
+
+                    Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+
+                    Scheme = "Bearer",
+
+                    BearerFormat = "JWT",
+
+                    In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+
+                    Description = "JWT Authorization header using the Bearer scheme."
+
+                });
+
+                options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement {
+
+    {
+
+        new Microsoft.OpenApi.Models.OpenApiSecurityScheme {
+
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference {
+
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+
+                        Id = "Bearer"
+
+                }
+
+            },
+
+            new string[] {}
+
+    }
+
+});
+
+            });
             builder.Services.AddScoped<IApplyJobRepo, EFApplyJobRepo>();
             builder.Services.AddScoped<IJobRepoAsync, EFJobRepoAsync>();
             builder.Services.AddScoped<ISkillRepo, EFSkillRepo>();
@@ -39,8 +81,8 @@ namespace InternalJobPortalWebAPI
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidIssuer = "https://www.snrao.com",
-                    ValidAudience = "https://www.snrao.com",
+                    ValidIssuer = "https://www.manipreethi.com",
+                    ValidAudience = "https://www.manipreethi.com",
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Johny Johny yes papa....open your laptop HAHAHA!!!"))
                 };
             });

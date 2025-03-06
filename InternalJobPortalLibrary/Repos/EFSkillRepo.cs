@@ -20,9 +20,9 @@ namespace InternalJobPortalLibrary.Repos
                 ctx.SaveChanges();
 
             }
-            catch (InternalJobPortalException e)
+            catch (Exception ex)
             {
-                throw new InternalJobPortalException("Error in deleting skill");
+                throw new InternalJobPortalException(ex.InnerException.Message);
             }
         }
         public async Task<List<Skill>> GetAllSkills()
@@ -46,10 +46,9 @@ namespace InternalJobPortalLibrary.Repos
                 Skill skill = await (from c in ctx.Skills where c.SkillID == sid select c).FirstAsync();
                 return skill;
             }
-            catch (InternalJobPortalException e)
+            catch (Exception ex)
             {
-                throw new InternalJobPortalException("Error in getting skill");
-
+                throw new InternalJobPortalException(ex.InnerException.Message);
             }
         }
 
@@ -60,9 +59,9 @@ namespace InternalJobPortalLibrary.Repos
                 await ctx.Skills.AddAsync(skill);
                 ctx.SaveChanges();
             }
-            catch (InternalJobPortalException e)
+            catch (InternalJobPortalException ex)
             {
-                throw new InternalJobPortalException("Error in inserting skill");
+                throw new InternalJobPortalException(ex.InnerException.Message);
             }
         }
 
@@ -75,9 +74,9 @@ namespace InternalJobPortalLibrary.Repos
                 sedit.SkillLevel = skill.SkillLevel;
                 ctx.SaveChanges();
             }
-            catch (InternalJobPortalException e)
+            catch (Exception ex)
             {
-                throw new InternalJobPortalException("Error in updating skill");
+                throw new InternalJobPortalException(ex.InnerException.Message);
             }
         }
     }

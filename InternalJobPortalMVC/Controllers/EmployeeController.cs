@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using InternalJobPortalMVC.Models;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InternalJobPortalMVC.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         // GET: EmployeeController
@@ -31,28 +33,31 @@ namespace InternalJobPortalMVC.Controllers
         }
 
         // GET: EmployeeController/Create
+        [Authorize(Roles = "Manager")]
         public ActionResult Create()
         {
             Employee employee = new Employee();
             return View(employee);
         }
-
+        [Authorize(Roles = "Manager")]
         // POST: EmployeeController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Employee employee)
         {
-            try
+            var response = await client.PostAsJsonAsync<Employee>("", employee);
+            if (response.IsSuccessStatusCode)
             {
-                await client.PostAsJsonAsync<Employee>("", employee);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            else
             {
-                return View();
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                throw new InternalJobPortalException(errorMessage);
             }
         }
         [Route("Employee/Edit/{id}")]
+        [Authorize(Roles = "Manager")]
         // GET: EmployeeController/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
@@ -65,6 +70,7 @@ namespace InternalJobPortalMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> Edit(string id, Employee employee)
         {
             try
@@ -79,6 +85,7 @@ namespace InternalJobPortalMVC.Controllers
         }
         [Route("Employee/Delete/{id}")]
         // GET: EmployeeController/Delete/5
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> Delete(string id)
         {
             Employee employee = await client.GetFromJsonAsync<Employee>("" + id);
@@ -88,21 +95,23 @@ namespace InternalJobPortalMVC.Controllers
         // POST: EmployeeController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> Delete(string id, IFormCollection collection)
         {
-            try
+            var response = await client.DeleteAsync("" + id);
+            if (response.IsSuccessStatusCode)
             {
-                await client.DeleteAsync("" + id);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            else
             {
-                return View();
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                throw new InternalJobPortalException(errorMessage);
             }
         }
         [Route("Employee/ByJobId/{JobID}")]
         [HttpGet]
-      
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> ByJobId(string JobID)
         {
             try
@@ -146,14 +155,16 @@ namespace InternalJobPortalMVC.Controllers
         [Route("EmployeeSkill/Create")]
         public async Task<ActionResult> EmployeeSkillCreate(EmployeeSkill es)
         {
-            try
+
+            var response = await client.PostAsJsonAsync<EmployeeSkill>("", es);
+            if (response.IsSuccessStatusCode)
             {
-                await client2.PostAsJsonAsync<EmployeeSkill>("", es);
                 return RedirectToAction(nameof(EmployeeSkillIndex), new { id = es.EmployeeID });
             }
-            catch
+            else
             {
-                return View();
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                throw new InternalJobPortalException(errorMessage);
             }
         }
         [Route("EmployeeSkill/Edit/{empId}/{skillId}")]

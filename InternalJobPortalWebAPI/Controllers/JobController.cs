@@ -1,5 +1,6 @@
 ﻿using InternalJobPortalLibrary.Models;
 using InternalJobPortalLibrary.Repos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ namespace InternalJobPortalWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class JobController : ControllerBase
     {
         readonly IJobRepoAsync jobRepo;     //Declares a readonly field of type

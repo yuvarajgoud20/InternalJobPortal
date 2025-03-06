@@ -1,13 +1,15 @@
 ﻿using InternalJobPortalLibrary;
 using InternalJobPortalLibrary.Models;
 using JobPostLibrary.Repos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobPostWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-  
+    [Authorize]
+
     public class JobPostController : ControllerBase
     {
         private readonly IJobPostRepoAsync jobRepo;

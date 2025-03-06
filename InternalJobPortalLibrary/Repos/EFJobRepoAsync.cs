@@ -19,9 +19,9 @@ namespace InternalJobPortalLibrary.Repos
                 ctx.Jobs.Remove(jdel); //removing job from jobs list
                 ctx.SaveChanges(); //saving changes
             }
-            catch (InternalJobPortalException e)
+            catch (Exception ex)
             {
-                throw new InternalJobPortalException("Error in deleting job"); //Exception handling
+                throw new InternalJobPortalException(ex.InnerException.Message); //Exception handling
             }
         }
 
@@ -56,11 +56,11 @@ namespace InternalJobPortalLibrary.Repos
             try
             {
                 await ctx.Jobs.AddAsync(job); //adding job to jobs list
-                ctx.SaveChanges();
+                await ctx.SaveChangesAsync();
             }
-            catch (InternalJobPortalException e)
+            catch (InternalJobPortalException ex)
             {
-                throw new InternalJobPortalException("Error in inserting job"); //Exception handling
+                throw new InternalJobPortalException("hi"); //Exception handling
             }
         }
 

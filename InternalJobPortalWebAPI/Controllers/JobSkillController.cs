@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using InternalJobPortalLibrary;
 using InternalJobPortalLibrary.Models;
 using InternalJobPortalLibrary.Repos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InternalJobPortalWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class JobSkillController : ControllerBase
     {
         readonly IJobSkillRepoAsync jobSkillRepo;

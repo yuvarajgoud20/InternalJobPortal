@@ -1195,6 +1195,7 @@
             "nullable": true
           },
           "phoneNo": {
+            "maxLength": 10,
             "type": "string",
             "nullable": true
           },
@@ -1392,6 +1393,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "JWT Authorization header using the Bearer scheme.",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

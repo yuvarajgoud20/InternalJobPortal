@@ -9,6 +9,7 @@ using System.Net.Http.Json;
 
 namespace InternalJobPortalMVC.Controllers
 {
+    [Authorize]
     public class JobPostController : Controller
     {
         static HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/JobPost/") };
@@ -42,6 +43,7 @@ namespace InternalJobPortalMVC.Controllers
         }
 
         // GET: JobPostController/Create
+        [Authorize(Roles = "Manager")]
         public ActionResult Create()
         {
             JobPost jobpost  = new JobPost();
@@ -51,20 +53,23 @@ namespace InternalJobPortalMVC.Controllers
         // POST: JobPostController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> Create(JobPost jobpost)
         {
-            try
+            var response = await client.PostAsJsonAsync("", jobpost);
+            if (response.IsSuccessStatusCode)
             {
-                await client.PostAsJsonAsync("", jobpost);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            else
             {
-                return View();
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                throw new InternalJobPortalException(errorMessage);
             }
         }
         [Route("JobPost/Edit/{postID}")]
         // GET: JobPostController/Edit/5
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> Edit(int postID)
         {
             JobPost jobPost = await client.GetFromJsonAsync<JobPost>(Convert.ToString(postID));
@@ -76,6 +81,7 @@ namespace InternalJobPortalMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("JobPost/Edit/{postID}")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> Edit(int postID, JobPost jobpost)
         {
             try
@@ -90,6 +96,7 @@ namespace InternalJobPortalMVC.Controllers
         }
 
         [Route("JobPost/Delete/{postID}")]
+        [Authorize(Roles = "Manager")]
 
         // GET: JobPostController/Delete/5
         public async Task<ActionResult> Delete(int postID)
@@ -103,24 +110,24 @@ namespace InternalJobPortalMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("JobPost/Delete/{postID}")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> Delete(int postID, IFormCollection collection)
         {
-            try
+            var response = await client.DeleteAsync("" + postID);
+            if (response.IsSuccessStatusCode)
             {
-                await client.DeleteAsync(Convert.ToString(postID));
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            else
             {
-                return View();
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                throw new InternalJobPortalException(errorMessage);
             }
         }
 
-
-
-       
         [HttpGet]
         [Route("JobPost/GetByJobId/{jobId}")]
+        
         public async Task<ActionResult> ByJobId(string jobId)
         {
             try
@@ -142,6 +149,7 @@ namespace InternalJobPortalMVC.Controllers
             
         }
         [Route("Application/{postID}")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> ApplicationIndex(int postID)
         {
             //string userName = User.Identity.Name;
@@ -163,13 +171,14 @@ namespace InternalJobPortalMVC.Controllers
 
         // GET: JobPostController/Details/5
         [Route("Application/Details/{postID}/{employeeId}")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> ApplicationDetails(int postID, string employeeId)
         {
             ApplyJob job = await client3.GetFromJsonAsync<ApplyJob>(Convert.ToString("" + postID + "/" + employeeId));
             return View(job);
 
         }
-        
+        [Authorize(Roles = "Manager")]
         // GET: JobPostController/Create
         public ActionResult ApplicationCreate(int postID)
         {
@@ -181,19 +190,20 @@ namespace InternalJobPortalMVC.Controllers
         // POST: JobPostController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> ApplicationCreate(ApplyJob job)
         {
-            try
+            var response = await client3.PostAsJsonAsync("", job);
+            if (response.IsSuccessStatusCode)
+                return RedirectToAction(nameof(ApplicationIndex), new { postID = job.PostID });
+            else
             {
-                await client3.PostAsJsonAsync("", job);
-                return RedirectToAction(nameof(ApplicationIndex),new {postID = job.PostID});
-            }
-            catch
-            {
-                return View();
+                string msg = await response.Content.ReadAsStringAsync();
+                throw new InternalJobPortalException(msg);
             }
         }
         [Route("Application/Edit/{postID}/{employeeId}")]
+        [Authorize(Roles = "Manager")]
         // GET: JobPostController/Edit/5
         public async Task<ActionResult> ApplicationEdit(int postID, string employeeId)
         {
@@ -206,6 +216,7 @@ namespace InternalJobPortalMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Application/Edit/{postID}/{employeeId}")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> ApplicationEdit(int postID, string employeeId, ApplyJob job)
         {
             try
@@ -220,6 +231,7 @@ namespace InternalJobPortalMVC.Controllers
         }
 
         [Route("Application/Delete/{postID}/{employeeId}")]
+        [Authorize(Roles = "Manager")]
 
         // GET: JobPostController/Delete/5
         public async Task<ActionResult> ApplicationDelete(int postID, string employeeId)
@@ -233,6 +245,7 @@ namespace InternalJobPortalMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Application/Delete/{postID}/{employeeId}")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> ApplicationDelete(int postID, string employeeId, IFormCollection collection)
         {
             try
@@ -247,6 +260,7 @@ namespace InternalJobPortalMVC.Controllers
         }
         [HttpGet]
         [Route("Application/ByPostId/{postID}")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> ApplicationByPostId(string postID)
         {
             try
@@ -262,6 +276,7 @@ namespace InternalJobPortalMVC.Controllers
         }
         [HttpGet]
         [Route("Application/ByEmpId/{employeeId}")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> ApplicationByEmpId(string employeeId)
         {
             try

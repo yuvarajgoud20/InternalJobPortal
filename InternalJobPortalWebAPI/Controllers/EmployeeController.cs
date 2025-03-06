@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using InternalJobPortalLibrary.Repos;
 using InternalJobPortalLibrary;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InternalJobPortalWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EmployeeController : ControllerBase
     {
         readonly IEmployeeRepoAsync empRepo;

@@ -32,7 +32,7 @@ public partial class InternalJobPortalDBContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("data source=(localdb)\\MSSQLLocalDB; database=InternalJobPortalDB; integrated security=true");
+        => optionsBuilder.UseSqlServer("Server=tcp:sqlserverteam2.database.windows.net,1433;Initial Catalog=InternalJobPortalDB-Tream2;Persist Security Info=False;User ID=team2;Password=Yuv@r@j123");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

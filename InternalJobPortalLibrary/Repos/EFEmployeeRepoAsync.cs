@@ -16,10 +16,17 @@ namespace InternalJobPortalLibrary.Repos
         InternalJobPortalDBContext ctx=new InternalJobPortalDBContext();
         public async Task DeleteEmployeeAsync(string EmployeeID)
         {
+            try
+            {
 
-            Employee empdel = await GetEmployeeAsync(EmployeeID);
-            ctx.Employees.Remove(empdel);
-            ctx.SaveChanges();
+                Employee empdel = await GetEmployeeAsync(EmployeeID);
+                ctx.Employees.Remove(empdel);
+                ctx.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw new InternalJobPortalException(ex.InnerException.Message);
+            }
         }
 
         public async Task<List<Employee>> GetAllEmployeesAsync()
