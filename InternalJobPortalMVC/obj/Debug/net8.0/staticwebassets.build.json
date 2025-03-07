@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BCs4V/GhS7YLxwLe6MaNw7HcOQknyKhJp7RHyCIKmVE=",
+  "Hash": "fS5l1Y20PlWob+qneV24/7rvbwOz4xlUJQUotlVntJ8=",
   "Source": "InternalJobPortalMVC",
   "BasePath": "_content/InternalJobPortalMVC",
   "Mode": "Default",
@@ -1333,8 +1333,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "esqbc2uunn",
+      "Integrity": "om+s/Vs3AHr4oEyHsLG4oYA2Ii6PdFAKSMMPk2h8vnY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -2581,51 +2581,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.c2tiyv64ts.css",
-      "AssetFile": "C:\\ZelisDot.Net\\Yuvi_Anna3\\InternalJobPortal\\InternalJobPortalMVC\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "362"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 07 Mar 2025 09:10:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
-        }
-      ]
-    },
-    {
       "Route": "css/site.css",
       "AssetFile": "C:\\ZelisDot.Net\\Yuvi_Anna3\\InternalJobPortal\\InternalJobPortalMVC\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -2636,7 +2591,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "366"
         },
         {
           "Name": "Content-Type",
@@ -2644,11 +2599,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"om+s/Vs3AHr4oEyHsLG4oYA2Ii6PdFAKSMMPk2h8vnY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 07 Mar 2025 09:10:30 GMT"
+          "Value": "Fri, 07 Mar 2025 11:41:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2658,7 +2613,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-om+s/Vs3AHr4oEyHsLG4oYA2Ii6PdFAKSMMPk2h8vnY="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.esqbc2uunn.css",
+      "AssetFile": "C:\\ZelisDot.Net\\Yuvi_Anna3\\InternalJobPortal\\InternalJobPortalMVC\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "366"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"om+s/Vs3AHr4oEyHsLG4oYA2Ii6PdFAKSMMPk2h8vnY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 07 Mar 2025 11:41:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "esqbc2uunn"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-om+s/Vs3AHr4oEyHsLG4oYA2Ii6PdFAKSMMPk2h8vnY="
         }
       ]
     },

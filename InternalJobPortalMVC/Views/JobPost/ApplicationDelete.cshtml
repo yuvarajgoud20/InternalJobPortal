@@ -1,44 +1,65 @@
 ﻿@model InternalJobPortalMVC.Models.ApplyJob
 
 @{
-    ViewData["Title"] = "ApplicationDelete";
+    ViewData["Title"] = "Application Delete";
 }
 
-<h1>ApplicationDelete</h1>
+<div class="container d-flex justify-content-center mt-4">
+    <div class="card shadow-lg p-4" style="width: 50%;">
+        <!-- Heading with Black Background -->
+        <div class="card-header text-center text-white" style="background-color: black;">
+            <h2 class="mb-0">Delete Application</h2>
+        </div>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>ApplyJob</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PostID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PostID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmployeeID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmployeeID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AppliedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AppliedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ApplicationStatus)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ApplicationStatus)
-        </dd>
-    </dl>
-    
-    <form asp-action="ApplicationDelete">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        @Html.ActionLink("Applications", "ApplicationIndex", new { postID = Model.PostID })
-    </form>
+        <div class="card-body text-center">
+            <h4 class="text-danger">Are you sure you want to delete this application?</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.PostID)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.PostID)
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.EmployeeID)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.EmployeeID)
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.AppliedDate)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.AppliedDate)
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.ApplicationStatus)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.ApplicationStatus)
+                </dd>
+            </dl>
+
+            <form asp-action="ApplicationDelete" method="post">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a asp-action="ApplicationIndex" asp-route-postID="@Model.PostID" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
 </div>
+
+@* Custom CSS for Styling *@
+<style>
+    .card {
+        border-radius: 12px;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+</style>

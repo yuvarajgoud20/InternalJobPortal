@@ -1,43 +1,112 @@
 ﻿@model InternalJobPortalMVC.Models.EmployeeSkill
 
 @{
-    ViewData["Title"] = "EmployeeSkillEdit";
+    ViewData["Title"] = "Edit Employee Skill";
 }
 
-<h1>EmployeeSkillEdit</h1>
+<style>
+    .edit-card {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 15px;
+        background: #f0f0f0;
+        box-shadow: 8px 8px 16px #b8babc, -8px -8px 16px #ffffff;
+    }
 
-<h4>EmployeeSkill</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EmployeeSkillEdit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EmployeeID" class="control-label"></label>
-                <input asp-for="EmployeeID" class="form-control" />
-                <span asp-validation-for="EmployeeID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SkillID" class="control-label"></label>
-                <input asp-for="SkillID" class="form-control" />
-                <span asp-validation-for="SkillID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SkillExperience" class="control-label"></label>
-                <input asp-for="SkillExperience" class="form-control" />
-                <span asp-validation-for="SkillExperience" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+    .header {
+        background-color: #000; /* Black */
+        color: white;
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-<div>
-    @Html.ActionLink("EmployeeSkills", "EmployeeSkillIndex", new { id = Model.EmployeeID })
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        box-shadow: inset 4px 4px 8px #b8babc, inset -4px -4px 8px #ffffff;
+        border: none;
+        padding: 10px;
+        background: #f0f0f0;
+    }
+
+    .btn-save {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background-color: #28a745;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: 0.3s;
+        margin-top: 10px;
+        border: none;
+        box-shadow: 4px 4px 8px #b8babc, -4px -4px 8px #ffffff;
+    }
+
+        .btn-save:hover {
+            background-color: #218838;
+        }
+
+    .back-btn {
+        display: block;
+        text-align: center;
+        background-color: #6c757d;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+</style>
+
+<div class="edit-card">
+    <div class="header">Edit Employee Skill</div>
+
+    <form asp-action="EmployeeSkillEdit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="EmployeeID" class="control-label"></label>
+            <input asp-for="EmployeeID" class="form-control" readonly />
+            <span asp-validation-for="EmployeeID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SkillID" class="control-label"></label>
+            <input asp-for="SkillID" class="form-control" />
+            <span asp-validation-for="SkillID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SkillExperience" class="control-label"></label>
+            <input asp-for="SkillExperience" class="form-control" />
+            <span asp-validation-for="SkillExperience" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn-save">Save</button>
+    </form>
+
+    <a asp-action="EmployeeSkillIndex" asp-route-id="@Model.EmployeeID" class="back-btn">Back to Employee Skills</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

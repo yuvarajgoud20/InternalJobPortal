@@ -37,9 +37,9 @@ namespace JobPostLibrary.Repos
                     ctx.JobPosts.Remove(jp2d);
                     await ctx.SaveChangesAsync();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    throw new InternalJobPortalException("No such PostId");
+                    throw new InternalJobPortalException(ex.Message);
                 }
             }
 

@@ -1,35 +1,63 @@
 ﻿@model InternalJobPortalMVC.Models.EmployeeSkill
 
 @{
-    ViewData["Title"] = "EmployeeSkillDetails";
+    ViewData["Title"] = "Employee Skill Details";
 }
 
-<h1>EmployeeSkillDetails</h1>
+<style>
+    .details-card {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 15px;
+        background: #f0f0f0;
+        box-shadow: 8px 8px 16px #b8babc, -8px -8px 16px #ffffff;
+    }
 
-<div>
-    <h4>EmployeeSkill</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmployeeID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmployeeID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SkillID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SkillID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SkillExperience)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SkillExperience)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Back to list", "EmployeeSkillIndex", new { id = Model.EmployeeID })
+    .header {
+        background-color: #000; /* Black */
+        color: white;
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .info {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: inset 4px 4px 8px #b8babc, inset -4px -4px 8px #ffffff;
+        background: #f0f0f0;
+    }
+
+    .back-btn {
+        display: block;
+        text-align: center;
+        background-color: #6c757d;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+</style>
+
+<div class="details-card">
+    <div class="header">Employee Skill Details</div>
+
+    <div class="info"><strong>Employee ID:</strong> @Html.DisplayFor(model => model.EmployeeID)</div>
+    <div class="info"><strong>Skill ID:</strong> @Html.DisplayFor(model => model.SkillID)</div>
+    <div class="info"><strong>Experience:</strong> @Html.DisplayFor(model => model.SkillExperience) years</div>
+
+    <a asp-action="EmployeeSkillIndex" asp-route-id="@Model.EmployeeID" class="back-btn">Back to Employee Skills</a>
 </div>

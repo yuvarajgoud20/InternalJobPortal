@@ -1,47 +1,47 @@
 ﻿@model IEnumerable<InternalJobPortalMVC.Models.JobSkill>
 
 @{
-    ViewData["Title"] = "JobSkillIndex";
+    ViewData["Title"] = "Job Skills";
 }
+<partial name="_Notification" />
 
-<h1>JobSkillIndex</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.JobID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SkillID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Experience)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SkillID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Experience)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded">
+        <div class="card-header bg-black text-white text-center">
+            <h4>Job Skills</h4>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-end mb-3">
+                <a asp-action="Create" class="btn btn-success">+ Add New Skill</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.JobID)</th>
+                            <th>@Html.DisplayNameFor(model => model.SkillID)</th>
+                            <th>@Html.DisplayNameFor(model => model.Experience)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.JobID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.SkillID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Experience)</td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.JobID" class="btn btn-warning btn-sm">Edit</a>
+                                    <a asp-action="Details" asp-route-id="@item.JobID" class="btn btn-info btn-sm">Details</a>
+                                    <a asp-action="Delete" asp-route-id="@item.JobID" class="btn btn-danger btn-sm">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

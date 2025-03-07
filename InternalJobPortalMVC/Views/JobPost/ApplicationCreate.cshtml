@@ -28,7 +28,8 @@
 
                     <div class="mb-3">
                         <label asp-for="ApplicationStatus" class="form-label">Application Status</label>
-                        <input asp-for="ApplicationStatus" class="form-control" value="Reviewing" readonly />
+                        <input hidden asp-for="ApplicationStatus" class="form-control" value="P" readonly />
+                        <input class="form-control" value="Reviewing" readonly />
                     </div>
 
                     <div class="text-center">

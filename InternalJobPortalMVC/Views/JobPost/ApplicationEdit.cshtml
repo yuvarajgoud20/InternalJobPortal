@@ -1,48 +1,64 @@
 ﻿@model InternalJobPortalMVC.Models.ApplyJob
 
 @{
-    ViewData["Title"] = "ApplicationEdit";
+    ViewData["Title"] = "Application Edit";
 }
 
-<h1>ApplicationEdit</h1>
+<div class="container d-flex justify-content-center mt-4">
+    <div class="card shadow-lg p-4" style="width: 50%;">
+        <!-- Heading with Black Background -->
+        <div class="card-header text-center text-white" style="background-color: black;">
+            <h2 class="mb-0">Edit Application</h2>
+        </div>
 
-<h4>ApplyJob</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="ApplicationEdit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PostID" class="control-label"></label>
-                <input asp-for="PostID" class="form-control" />
-                <span asp-validation-for="PostID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmployeeID" class="control-label"></label>
-                <input asp-for="EmployeeID" class="form-control" />
-                <span asp-validation-for="EmployeeID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AppliedDate" class="control-label"></label>
-                <input asp-for="AppliedDate" class="form-control" />
-                <span asp-validation-for="AppliedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ApplicationStatus" class="control-label"></label>
-                <input asp-for="ApplicationStatus" class="form-control" />
-                <span asp-validation-for="ApplicationStatus" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        <div class="card-body">
+            <form asp-action="ApplicationEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="PostID" class="control-label font-weight-bold"></label>
+                    <input asp-for="PostID" class="form-control" readonly />
+                    <span asp-validation-for="PostID" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="EmployeeID" class="control-label font-weight-bold"></label>
+                    <input asp-for="EmployeeID" class="form-control" readonly />
+                    <span asp-validation-for="EmployeeID" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="AppliedDate" class="control-label font-weight-bold"></label>
+                    <input asp-for="AppliedDate" class="form-control" readonly />
+                    <span asp-validation-for="AppliedDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ApplicationStatus" class="control-label font-weight-bold"></label>
+                    <select asp-for="ApplicationStatus" class="form-control">
+                        <option value="P">Pending</option>
+                        <option value="A">Accepted</option>
+                        <option value="R">Rejected</option>
+                    </select>
+                    <span asp-validation-for="ApplicationStatus" class="text-danger"></span>
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-success w-100">Save Changes</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-footer text-center">
+            <a asp-action="ApplicationIndex" asp-route-postID="@Model.PostID" class="btn btn-secondary w-100">
+                Back to Applications
+            </a>
+        </div>
     </div>
 </div>
 
-<div>
-    @Html.ActionLink("Applications", "ApplicationIndex", new { postID = Model.PostID })
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

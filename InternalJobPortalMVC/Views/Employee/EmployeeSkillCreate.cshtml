@@ -3,45 +3,112 @@
 @model InternalJobPortalMVC.Models.EmployeeSkill
 
 @{
-    ViewData["Title"] = "EmployeeSkillCreate";
+    ViewData["Title"] = "Create Employee Skill";
 }
 
-<h1>EmployeeSkillCreate</h1>
+<style>
+    .create-card {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 15px;
+        background: #f0f0f0;
+        box-shadow: 8px 8px 16px #b8babc, -8px -8px 16px #ffffff;
+    }
 
-<h4>EmployeeSkill</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EmployeeSkillCreate">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EmployeeID" class="control-label"></label>
-                <input asp-for="EmployeeID" class="form-control" /> 
-                @* @Html.DropDownListFor(Model => Model.EmployeeID, await ForeignKeyHelper.GetEmployeeIds()) *@
-                <span asp-validation-for="EmployeeID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SkillID" class="control-label"></label>
-                @* <input asp-for="SkillID" class="form-control" /> *@
-                @Html.DropDownListFor(Model => Model.SkillID, await ForeignKeyHelper.GetSkillIds())
-                <span asp-validation-for="SkillID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SkillExperience" class="control-label"></label>
-                <input asp-for="SkillExperience" class="form-control" />
-                <span asp-validation-for="SkillExperience" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+    .header {
+        background-color: #000; /* Black */
+        color: white;
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-<div>
-    @Html.ActionLink("EmployeeSkills", "EmployeeSkillIndex", new { id = Model.EmployeeID })
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        box-shadow: inset 4px 4px 8px #b8babc, inset -4px -4px 8px #ffffff;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        width: 100%;
+    }
+
+    .btn-primary {
+        display: block;
+        width: 100%;
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .back-btn {
+        display: block;
+        text-align: center;
+        background-color: #6c757d;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+</style>
+
+<div class="create-card">
+    <div class="header">Create Employee Skill</div>
+
+    <form asp-action="EmployeeSkillCreate">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="EmployeeID" class="control-label"></label>
+            <input asp-for="EmployeeID" class="form-control" />
+            @* @Html.DropDownListFor(Model => Model.EmployeeID, await ForeignKeyHelper.GetEmployeeIds()) *@
+            <span asp-validation-for="EmployeeID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SkillID" class="control-label"></label>
+            @Html.DropDownListFor(Model => Model.SkillID, await ForeignKeyHelper.GetSkillIds(), new { @class = "form-control" })
+            <span asp-validation-for="SkillID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SkillExperience" class="control-label"></label>
+            <input asp-for="SkillExperience" class="form-control" />
+            <span asp-validation-for="SkillExperience" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn-primary" />
+        </div>
+    </form>
+
+    <a asp-action="EmployeeSkillIndex" asp-route-id="@Model.EmployeeID" class="back-btn">Back to Employee Skills</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

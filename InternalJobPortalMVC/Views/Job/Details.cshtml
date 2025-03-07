@@ -4,38 +4,91 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+    }
 
-<div>
-    <h4>Job</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JobID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JobID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JobTitle)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JobTitle)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JobDescription)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JobDescription)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Salary)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Salary)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Index">Back to List</a>
+    .details-container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+        background-color: #ffffff;
+    }
+
+    .header {
+        background-color: #000; /* Black Background */
+        color: white; /* White Text */
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .details-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+        .details-row:last-child {
+            border-bottom: none;
+        }
+
+    .label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .value {
+        color: #555;
+    }
+
+    .back-btn {
+        display: block;
+        text-align: center;
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<div class="details-container">
+    <div class="header">Job Details</div>
+
+    <div class="details-row">
+        <span class="label">Job ID:</span>
+        <span class="value">@Html.DisplayFor(model => model.JobID)</span>
+    </div>
+
+    <div class="details-row">
+        <span class="label">Title:</span>
+        <span class="value">@Html.DisplayFor(model => model.JobTitle)</span>
+    </div>
+
+    <div class="details-row">
+        <span class="label">Description:</span>
+        <span class="value">@Html.DisplayFor(model => model.JobDescription)</span>
+    </div>
+
+    <div class="details-row">
+        <span class="label">Salary:</span>
+        <span class="value">₹@Html.DisplayFor(model => model.Salary)</span>
+    </div>
+
+    <a asp-action="Index" class="back-btn">Back to List</a>
 </div>

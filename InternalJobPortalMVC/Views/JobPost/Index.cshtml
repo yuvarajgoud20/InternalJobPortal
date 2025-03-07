@@ -6,52 +6,103 @@
     var role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
 }
 
-<h1 class="mb-4 text-center">Job Posts</h1>
+<partial name="_Notification" />
+
+<style>
+    .page-header {
+        background-color: black;
+        color: white;
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .center-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .card {
+        width: 320px;
+        background: #f0f0f0;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 8px 8px 16px #b8babc, -8px -8px 16px #ffffff;
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+    .card-title {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .btn-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="page-header">Job Posts</div>
+
+
 
 @if (role == "Manager")
 {
-    <div class="text-end mb-3">
+    <div class="center-container">
         <a asp-action="Create" class="btn btn-primary">Create New Job</a>
     </div>
 }
 
-<div class="row">
+<div class="card-container">
     @foreach (var item in Model)
     {
-        <div class="col-md-4">
-            <div class="card shadow-sm mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Job ID: @item.JobID</h5>
-                    <p class="card-text">
-                        <strong>Post ID:</strong> @item.PostID <br>
-                        <strong>Date of Posting:</strong> @(item.DateOfPosting?.ToShortDateString() ?? "N/A") <br>
-                        <strong>Last Date to Apply:</strong> @(item.LastDateToApply?.ToShortDateString() ?? "N/A") <br>
-                        <strong>No. of Vacancies:</strong> @item.NoOfVacancies
-                    </p>
+        <div class="card">
+            <h5 class="card-title">Job ID: @item.JobID</h5>
+            <p>
+                <strong>Post ID:</strong> @item.PostID <br>
+                <strong>Date of Posting:</strong> @(item.DateOfPosting?.ToShortDateString() ?? "N/A") <br>
+                <strong>Last Date to Apply:</strong> @(item.LastDateToApply?.ToShortDateString() ?? "N/A") <br>
+                <strong>No. of Vacancies:</strong> @item.NoOfVacancies
+            </p>
 
-                    <div class="d-flex flex-wrap gap-2">
-                        <a asp-action="Details" asp-route-postID="@item.PostID" class="btn btn-info btn-sm">View Details</a>
-                        <a asp-action="ByJobId" asp-route-jobId="@item.JobID" class="btn btn-secondary btn-sm">Find by Job ID</a>
+            <div class="btn-container">
+                <a asp-action="Details" asp-route-postID="@item.PostID" class="btn btn-info btn-sm">View Details</a>
+                <a asp-action="ByJobId" asp-route-jobId="@item.JobID" class="btn btn-secondary btn-sm">Find by Job ID</a>
 
-                        @if (role == "Manager")
-                        {
-                            <a asp-action="ApplicationIndex" asp-route-postID="@item.PostID" class="btn btn-success btn-sm">Applications</a>
-                            <a asp-action="Edit" asp-route-postID="@item.PostID" class="btn btn-warning btn-sm">Edit</a>
-                            <a asp-action="Delete" asp-route-postID="@item.PostID" class="btn btn-danger btn-sm">Delete</a>
-                        }
-                        else if (role == "Employee")
-                        {
-                            @* <a asp-action="ApplicationCreate" asp-controller="Application" asp-route-postID="@item.PostID" class="btn btn-primary btn-sm">Apply</a> *@
-                            @Html.ActionLink("Apply", "ApplicationCreate", new { postID = item.PostID })
-                        }
-                    </div>
-                </div>
+                @if (role == "Manager")
+                {
+                    <a asp-action="ApplicationIndex" asp-route-postID="@item.PostID" class="btn btn-success btn-sm">Applications</a>
+                    <a asp-action="Edit" asp-route-postID="@item.PostID" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-postID="@item.PostID" class="btn btn-danger btn-sm">Delete</a>
+                }
+                else if (role == "Employee")
+                {
+                    @Html.ActionLink("Apply", "ApplicationCreate", new { postID = item.PostID }, new { @class = "btn btn-primary btn-sm" })
+                }
             </div>
         </div>
     }
-    }
 </div>
 
-<div class="text-center mt-3">
+<div class="center-container">
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>

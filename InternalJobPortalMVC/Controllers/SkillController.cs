@@ -34,7 +34,7 @@ namespace InternalJobPortalMVCApp.Controllers
         }
 
         // GET: SkillController/Create
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             Skill skill = new Skill();
@@ -44,12 +44,16 @@ namespace InternalJobPortalMVCApp.Controllers
         // POST: SkillController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(Skill skill)
         {
             var response = await client.PostAsJsonAsync<Skill>("", skill);
             if (response.IsSuccessStatusCode)
+            {
+                TempData["success"] = "Skill Added Succesfully";
                 return RedirectToAction(nameof(Index));
+            }
+                
             else
             {
                 string msg = await response.Content.ReadAsStringAsync();
@@ -59,7 +63,7 @@ namespace InternalJobPortalMVCApp.Controllers
 
         // GET: SkillController/Edit/5
         [Route("Skill/Edit/{sid}")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string sid)
         {
             Skill skill = await client.GetFromJsonAsync<Skill>("" + sid);
@@ -70,12 +74,13 @@ namespace InternalJobPortalMVCApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Skill/Edit/{sid}")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string sid, Skill skill)
         {
             try
             {
                 await client.PutAsJsonAsync<Skill>("" + sid, skill);
+                TempData["success"] = "Skill Updated Succesfully";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -86,7 +91,7 @@ namespace InternalJobPortalMVCApp.Controllers
 
         // GET: SkillController/Delete/5
         [Route("Skill/Delete/{sid}")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string sid)
         {
             Skill skill = await client.GetFromJsonAsync<Skill>("" + sid);
@@ -97,12 +102,13 @@ namespace InternalJobPortalMVCApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Skill/Delete/{sid}")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string sid, IFormCollection collection)
         {
             try
             {
                 await client.DeleteAsync("" + sid);
+                TempData["success"] = "Skill Deleted Succesfully";
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -1,58 +1,130 @@
 ﻿@model InternalJobPortalMVC.Models.Employee
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Employee";
 }
 
-<h1>Edit</h1>
+<style>
+    .edit-card {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 15px;
+        background: #f0f0f0;
+        box-shadow: 8px 8px 16px #b8babc, -8px -8px 16px #ffffff;
+    }
 
-<h4>Employee</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EmployeeID" class="control-label"></label>
-                <input asp-for="EmployeeID" class="form-control" />
-                <span asp-validation-for="EmployeeID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmployeeName" class="control-label"></label>
-                <input asp-for="EmployeeName" class="form-control" />
-                <span asp-validation-for="EmployeeName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmailID" class="control-label"></label>
-                <input asp-for="EmailID" class="form-control" />
-                <span asp-validation-for="EmailID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNo" class="control-label"></label>
-                <input asp-for="PhoneNo" class="form-control" />
-                <span asp-validation-for="PhoneNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalExperience" class="control-label"></label>
-                <input asp-for="TotalExperience" class="form-control" />
-                <span asp-validation-for="TotalExperience" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="JobID" class="control-label"></label>
-                <input asp-for="JobID" class="form-control" />
-                <span asp-validation-for="JobID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+    .header {
+        background-color: #000; /* Black background */
+        color: white; /* White text */
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        box-shadow: inset 4px 4px 8px #b8babc, inset -4px -4px 8px #ffffff;
+        border: none;
+        padding: 10px;
+        background: #f0f0f0;
+    }
+
+    .btn-save {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background-color: #28a745;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: 0.3s;
+        margin-top: 10px;
+        border: none;
+        box-shadow: 4px 4px 8px #b8babc, -4px -4px 8px #ffffff;
+    }
+
+        .btn-save:hover {
+            background-color: #218838;
+        }
+
+    .back-btn {
+        display: block;
+        text-align: center;
+        background-color: #6c757d;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+</style>
+
+<div class="edit-card">
+    <div class="header">Edit Employee</div>
+
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="EmployeeID" class="control-label"></label>
+            <input asp-for="EmployeeID" class="form-control" readonly />
+            <span asp-validation-for="EmployeeID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EmployeeName" class="control-label"></label>
+            <input asp-for="EmployeeName" class="form-control" />
+            <span asp-validation-for="EmployeeName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EmailID" class="control-label"></label>
+            <input asp-for="EmailID" class="form-control" />
+            <span asp-validation-for="EmailID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhoneNo" class="control-label"></label>
+            <input asp-for="PhoneNo" class="form-control" />
+            <span asp-validation-for="PhoneNo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TotalExperience" class="control-label"></label>
+            <input asp-for="TotalExperience" class="form-control" />
+            <span asp-validation-for="TotalExperience" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="JobID" class="control-label"></label>
+            <input asp-for="JobID" class="form-control" />
+            <span asp-validation-for="JobID" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn-save">Save</button>
+    </form>
+
+    <a asp-action="Index" class="back-btn">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

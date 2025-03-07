@@ -59,6 +59,7 @@ namespace InternalJobPortalMVC.Controllers
             var response = await client.PostAsJsonAsync("", jobpost);
             if (response.IsSuccessStatusCode)
             {
+                TempData["success"] = "JobPost Created Succesfully";
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -87,6 +88,7 @@ namespace InternalJobPortalMVC.Controllers
             try
             {
                 await client.PutAsJsonAsync(Convert.ToString(postID), jobpost);
+                TempData["success"] = "JobPost Updated Succesfully";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -102,6 +104,7 @@ namespace InternalJobPortalMVC.Controllers
         public async Task<ActionResult> Delete(int postID)
         {
             JobPost jobPost = await client.GetFromJsonAsync<JobPost>(Convert.ToString(postID));
+
             return View(jobPost);
 
         }
@@ -116,6 +119,7 @@ namespace InternalJobPortalMVC.Controllers
             var response = await client.DeleteAsync("" + postID);
             if (response.IsSuccessStatusCode)
             {
+                TempData["success"] = "JobPost Deleted Succesfully";
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -179,6 +183,7 @@ namespace InternalJobPortalMVC.Controllers
         }
         //[Authorize]
         // GET: JobPostController/Create
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> ApplicationCreate(int postID)
         {
             HttpClient client5 = new HttpClient();
@@ -208,11 +213,21 @@ namespace InternalJobPortalMVC.Controllers
         //[Authorize]
         public async Task<ActionResult> ApplicationCreate(ApplyJob job)
         {
-            
-            
+            string userName = User.Identity.Name;
+            string role = User.Claims.ToArray()[4].Value;
+            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
+            HttpClient client2 = new HttpClient();
+            string requestedUrl = "http://localhost:5102/api/Auth/" + userName + "/" + role + "/" + secretKey;
+            string token = await client2.GetStringAsync(requestedUrl);
+            client3.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
             var response = await client3.PostAsJsonAsync("", job);
             if (response.IsSuccessStatusCode)
-                return RedirectToAction(nameof(ApplicationIndex), new { postID = job.PostID });
+            {
+                TempData["success"] = "Job Applied Succesfully";
+                return RedirectToAction(nameof(Index));
+            }
+                
             else
             {
                 string msg = await response.Content.ReadAsStringAsync();
@@ -239,6 +254,7 @@ namespace InternalJobPortalMVC.Controllers
             try
             {
                 await client3.PutAsJsonAsync("" + Convert.ToString(postID) + "/" + employeeId, job);
+                TempData["success"] = "Application Updated Succesfully";
                 return RedirectToAction(nameof(ApplicationIndex), new { postID  });
             }
             catch
@@ -268,6 +284,7 @@ namespace InternalJobPortalMVC.Controllers
             try
             {
                 await client3.DeleteAsync("" + Convert.ToString(postID) + "/" + employeeId);
+                TempData["success"] = "JobPost Updated Succesfully";
                 return RedirectToAction(nameof(ApplicationIndex), new { postID });
             }
             catch

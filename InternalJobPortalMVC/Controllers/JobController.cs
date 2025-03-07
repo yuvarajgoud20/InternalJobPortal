@@ -35,7 +35,7 @@ public class JobController : Controller
 
 
         // GET: JobController/Create
-    [Authorize(Roles ="Manager")]
+    [Authorize(Roles ="Admin")]
     public ActionResult Create()
     {
         Job job = new Job();
@@ -45,13 +45,14 @@ public class JobController : Controller
     // POST: JobController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize(Roles ="Manager")]
+    [Authorize(Roles ="Admin")]
     public async Task<ActionResult> Create(Job job)
     {
         var response = await client.PostAsJsonAsync<Job>("", job);
         if (response.IsSuccessStatusCode)
         {
-            return RedirectToAction(nameof(Index));
+                TempData["success"] = "Job Created Succesfully";
+                return RedirectToAction(nameof(Index));
         }
         else
         {
@@ -62,7 +63,7 @@ public class JobController : Controller
 
     // GET: JobController/Edit/5
     [Route("Job/Edit/{jid}")]
-    [Authorize(Roles = "Manager")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> Edit(string jid)
     {
         Job job = await client.GetFromJsonAsync<Job>("" + jid);
@@ -74,13 +75,14 @@ public class JobController : Controller
     // POST: JobController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize(Roles = "Manager")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> Edit(string jid, Job job)
     {
         try
         {
             await client.PutAsJsonAsync<Job>("" + jid, job);
-            return RedirectToAction(nameof(Index));
+                TempData["success"] = "Job Updated Succesfully";
+                return RedirectToAction(nameof(Index));
         }
         catch
         {
@@ -89,7 +91,7 @@ public class JobController : Controller
     }
 
     [Route("Job/Delete/{jid}")]
-    [Authorize(Roles = "Manager")]
+    [Authorize(Roles = "Admin")]
         // GET: JobController/Delete/5
     public async Task<ActionResult> Delete(string jid)
     {
@@ -98,7 +100,7 @@ public class JobController : Controller
     }
 
     [Route("Job/Delete/{jid}")]
-    [Authorize(Roles = "Manager")]
+    [Authorize(Roles = "Admin")]
         // POST: JobController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -107,7 +109,8 @@ public class JobController : Controller
         var response = await client.DeleteAsync("" + jid);
         if (response.IsSuccessStatusCode)
         {
-            return RedirectToAction(nameof(Index));
+                TempData["success"] = "Job Created Succesfully";
+                return RedirectToAction(nameof(Index));
         }
         else
         {
@@ -133,7 +136,7 @@ public class JobController : Controller
     }
 
     // GET: JobSkillController/Create
-    [Authorize(Roles ="Manager")]
+    [Authorize(Roles ="Admin")]
     public ActionResult CreateJobSkill(string jobID)
     {
         JobSkill jobSkill = new JobSkill();
@@ -144,14 +147,14 @@ public class JobController : Controller
     // POST: JobSkillController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize(Roles ="Manager")]
+    [Authorize(Roles ="Admin")]
     public async Task<ActionResult> CreateJobSkill(JobSkill jobSkill)
     {
         var response = await client3.PostAsJsonAsync<JobSkill>("", jobSkill);
         if (response.IsSuccessStatusCode)
         {
-
-            return RedirectToAction(nameof(JobSkillByJobID), new { jobID = jobSkill.JobID });
+                TempData["success"] = "JobSkill Created Succesfully";
+                return RedirectToAction(nameof(JobSkillByJobID), new { jobID = jobSkill.JobID });
         }
         else
         {
@@ -162,7 +165,7 @@ public class JobController : Controller
 
     // GET: FlightController/Edit/5
     [Route("JobSkill/Edit/{jobID}/{skillID}")]
-    [Authorize(Roles ="Manager")]
+    [Authorize(Roles ="Admin")]
     public async Task<ActionResult> EditJobSkill(string jobID, string skillID)
     {
         JobSkill jobSkill = await client3.GetFromJsonAsync<JobSkill>("" + jobID + "/" + skillID);
@@ -173,13 +176,14 @@ public class JobController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Route("JobSkill/Edit/{jobID}/{skillID}")]
-    [Authorize(Roles ="Manager")]
+    [Authorize(Roles ="Admin")]
     public async Task<ActionResult> EditJobSkill(string jobID, string skillID, JobSkill jobSkill)
     {
         try
         {
             await client3.PutAsJsonAsync<JobSkill>("" + jobID + "/" + skillID, jobSkill);
-            return RedirectToAction(nameof(JobSkillByJobID), new { jobID });
+                TempData["success"] = "JobSkill Updated Succesfully";
+                return RedirectToAction(nameof(JobSkillByJobID), new { jobID });
         }
         catch
         {
@@ -189,7 +193,7 @@ public class JobController : Controller
 
     // GET: JobSkillController/Delete/5
     [Route("JobSkill/Delete/{jobID}/{skillID}")]
-    [Authorize(Roles ="Manager")]
+    [Authorize(Roles ="Admin")]
     public async Task<ActionResult> DeleteJobSkill(string jobID, string skillID)
     {
         JobSkill jobSkill = await client3.GetFromJsonAsync<JobSkill>("" + jobID + "/" + skillID);
@@ -200,13 +204,14 @@ public class JobController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Route("JobSkill/Delete/{jobID}/{skillID}")]
-    [Authorize(Roles ="Manager")]
+    [Authorize(Roles ="Admin")]
     public async Task<ActionResult> DeleteJobSkill(string jobID, string skillID, IFormCollection collection)
     {
         try
         {
             await client3.DeleteAsync("" + jobID + "/" + skillID);
-            return RedirectToAction(nameof(JobSkillIndex), new { jobID });
+                TempData["success"] = "JobSkill Deleted Succesfully";
+                return RedirectToAction(nameof(JobSkillIndex), new { jobID });
         }
         catch
         {
@@ -227,7 +232,7 @@ public class JobController : Controller
             ViewData["jobID"] = jobID;
         return View(jobSkillsByJobID);
     }
-    [Authorize(Roles ="Manager")]
+    [Authorize(Roles ="Admin")]
     public async Task<ActionResult> JobSkillBySkillID(string skillID)
     {
         List<JobSkill> jobSkillsBySkillID = await client3.GetFromJsonAsync<List<JobSkill>>("" + "BySkillID/" + skillID);

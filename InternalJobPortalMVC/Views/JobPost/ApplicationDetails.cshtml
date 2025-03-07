@@ -1,42 +1,62 @@
 ﻿@model InternalJobPortalMVC.Models.ApplyJob
 
 @{
-    ViewData["Title"] = "ApplicationDetails";
+    ViewData["Title"] = "Application Details";
 }
 
-<h1>ApplicationDetails</h1>
+<div class="container d-flex justify-content-center mt-4">
+    <div class="card shadow-lg p-4" style="width: 50%;">
+        <!-- Heading with Black Background -->
+        <div class="card-header text-center text-white" style="background-color: black;">
+            <h2 class="mb-0">Application Details</h2>
+        </div>
 
-<div>
-    <h4>ApplyJob</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PostID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PostID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmployeeID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmployeeID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AppliedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AppliedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ApplicationStatus)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ApplicationStatus)
-        </dd>
-    </dl>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.PostID)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.PostID)
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.EmployeeID)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.EmployeeID)
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.AppliedDate)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.AppliedDate)
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.ApplicationStatus)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.ApplicationStatus)
+                </dd>
+            </dl>
+
+            <div class="text-center mt-3">
+                <a asp-action="ApplicationIndex" asp-route-postID="@Model.PostID" class="btn btn-secondary">Back to Applications</a>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    @* @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) | *@
-    @Html.ActionLink("Applications", "ApplicationIndex", new { postID = Model.PostID })
-</div>
+
+@* Custom CSS for Styling *@
+<style>
+    .card {
+        border-radius: 12px;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+</style>

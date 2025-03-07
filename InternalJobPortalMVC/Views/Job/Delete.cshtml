@@ -1,44 +1,42 @@
 ﻿@model InternalJobPortalMVC.Models.Job
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete Job";
 }
 
-<h1>Delete</h1>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded">
+                <div class="card-header bg-black text-white text-center">
+                    <h4>Delete Job</h4>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="text-danger">Are you sure you want to delete this job?</h5>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-4 fw-semibold">Job ID:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.JobID)</dd>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Job</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JobID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JobID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JobTitle)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JobTitle)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JobDescription)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JobDescription)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Salary)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Salary)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+                        <dt class="col-sm-4 fw-semibold">Title:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.JobTitle)</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Description:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.JobDescription)</dd>
+
+                        <dt class="col-sm-4 fw-semibold">Salary:</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Salary)</dd>
+                    </dl>
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="JobID" />
+                        <div class="d-grid gap-2 mt-3">
+                            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

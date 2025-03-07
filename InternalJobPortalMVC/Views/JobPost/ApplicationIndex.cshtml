@@ -2,7 +2,7 @@
 @inject IHttpContextAccessor HttpContextAccessor
 
 @{
-    var userRole = HttpContextAccessor.HttpContext.User.FindFirst("Role")?.Value; // Assuming you store the role in claims
+    var userRole = HttpContextAccessor.HttpContext.User.FindFirst("Role")?.Value;
 }
 
 @model IEnumerable<InternalJobPortalMVC.Models.ApplyJob>
@@ -10,39 +10,39 @@
 @{
     ViewData["Title"] = "Application Index";
 }
+<partial name="_Notification" />
 
-<h2 class="text-center mb-4">Job Applications</h2>
+<div class="text-center">
+    <h2 class="mb-4" style="color: black;">Job Applications</h2>
 
-@if (userRole == "Manager")
-{
-    <p class="text-center">
-        @Html.ActionLink("Create new", "ApplicationCreate", new { postID = ViewData["postID"] }, new { @class = "btn btn-primary" })
-    </p>
-}
+    @if (userRole == "Manager")
+    {
+        <p>
+            @Html.ActionLink("Create New", "ApplicationCreate", new { postID = ViewData["postID"] }, new { @class = "btn btn-primary" })
+        </p>
+    }
+</div>
 
 <div class="container">
     <div class="row">
         @foreach (var item in Model)
         {
             <div class="col-md-4">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Post ID: @item.PostID</h5>
+                <div class="card job-card shadow-sm mb-4">
+                    @* Base shadow, hover effect added below *@
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title" style="color: black;">Post ID: @item.PostID</h5>
                         <p class="card-text">
                             <strong>Employee ID:</strong> @item.EmployeeID <br>
                             <strong>Applied Date:</strong> @(item.AppliedDate?.ToShortDateString() ?? "N/A") <br>
                             <strong>Status:</strong> @item.ApplicationStatus
                         </p>
 
-                       
-                            <div class="d-flex justify-content-between">
-                                <a asp-action="ApplicationEdit" asp-route-postID="@item.PostID" asp-route-employeeId="@item.EmployeeID" class="btn btn-warning btn-sm">Edit</a>
-                                <a asp-action="ApplicationDetails" asp-route-postID="@item.PostID" asp-route-employeeId="@item.EmployeeID" class="btn btn-info btn-sm">Details</a>
-                                <a asp-action="ApplicationDelete" asp-route-postID="@item.PostID" asp-route-employeeId="@item.EmployeeID" class="btn btn-danger btn-sm">Delete</a>
-                            </div>
-                       
-                            <a asp-action="ApplicationDetails" asp-route-postID="@item.PostID" asp-route-employeeId="@item.EmployeeID" class="btn btn-info btn-sm">View Details</a>
-                       
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="ApplicationEdit" asp-route-postID="@item.PostID" asp-route-employeeId="@item.EmployeeID" class="btn btn-warning btn-sm">Edit</a>
+                            <a asp-action="ApplicationDetails" asp-route-postID="@item.PostID" asp-route-employeeId="@item.EmployeeID" class="btn btn-info btn-sm">Details</a>
+                            <a asp-action="ApplicationDelete" asp-route-postID="@item.PostID" asp-route-employeeId="@item.EmployeeID" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -53,3 +53,17 @@
 <div class="text-center mt-4">
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
+
+@* Custom CSS for Hover Effect *@
+<style>
+    .job-card {
+        transition: all 0.3s ease-in-out;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+        .job-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+</style>

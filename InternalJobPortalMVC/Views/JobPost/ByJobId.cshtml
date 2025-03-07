@@ -4,16 +4,47 @@
     ViewData["Title"] = "View by Job ID";
 }
 
-<h2 class="text-center mb-4">Job Posts for Job ID: @Model.FirstOrDefault()?.JobID</h2>
+<div class="container mt-4">
+    <!-- Page Title -->
+    <div class="text-center">
+        <h2 class="text-white p-3 rounded" style="background-color: black;">
+            Job Posts for Job ID: @Model.FirstOrDefault()?.JobID
+        </h2>
+    </div>
 
-<div class="container">
-    <div class="row">
+    <!-- Table for Job Details -->
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered table-hover shadow-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">Post ID</th>
+                    <th class="text-center">Date of Posting</th>
+                    <th class="text-center">Last Date to Apply</th>
+                    <th class="text-center">No. of Vacancies</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@item.PostID</td>
+                        <td class="text-center">@(item.DateOfPosting?.ToShortDateString() ?? "N/A")</td>
+                        <td class="text-center">@(item.LastDateToApply?.ToShortDateString() ?? "N/A")</td>
+                        <td class="text-center">@item.NoOfVacancies</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Card Layout for Job Posts -->
+    <div class="row mt-4">
         @foreach (var item in Model)
         {
             <div class="col-md-4">
-                <div class="card shadow-sm mb-4">
+                <div class="card shadow-lg mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Post ID: @item.PostID</h5>
+                        <h5 class="card-title text-primary">Post ID: @item.PostID</h5>
                         <p class="card-text">
                             <strong>Date of Posting:</strong> @(item.DateOfPosting?.ToShortDateString() ?? "N/A") <br>
                             <strong>Last Date to Apply:</strong> @(item.LastDateToApply?.ToShortDateString() ?? "N/A") <br>
@@ -24,8 +55,33 @@
             </div>
         }
     </div>
+
+    <!-- Back Button -->
+    <div class="text-center mt-4">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
 </div>
 
-<div class="text-center mt-4">
-    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-</div>
+@* Custom Styling *@
+<style>
+    .card {
+        transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+        border-radius: 10px;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+    table {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .thead-dark th {
+        background-color: black !important;
+        color: white;
+    }
+</style>

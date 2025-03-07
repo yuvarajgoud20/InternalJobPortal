@@ -33,13 +33,13 @@ namespace InternalJobPortalMVC.Controllers
         }
 
         // GET: EmployeeController/Create
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             Employee employee = new Employee();
             return View(employee);
         }
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         // POST: EmployeeController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -48,6 +48,7 @@ namespace InternalJobPortalMVC.Controllers
             var response = await client.PostAsJsonAsync<Employee>("", employee);
             if (response.IsSuccessStatusCode)
             {
+                TempData["success"] = "Employee Created Succesfully";
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -57,7 +58,7 @@ namespace InternalJobPortalMVC.Controllers
             }
         }
         [Route("Employee/Edit/{id}")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         // GET: EmployeeController/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
@@ -70,12 +71,13 @@ namespace InternalJobPortalMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string id, Employee employee)
         {
             try
             {
                 await client.PutAsJsonAsync("" + id, employee);
+                TempData["success"] = "Employee Updated Succesfully";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -85,7 +87,7 @@ namespace InternalJobPortalMVC.Controllers
         }
         [Route("Employee/Delete/{id}")]
         // GET: EmployeeController/Delete/5
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string id)
         {
             Employee employee = await client.GetFromJsonAsync<Employee>("" + id);
@@ -95,12 +97,13 @@ namespace InternalJobPortalMVC.Controllers
         // POST: EmployeeController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string id, IFormCollection collection)
         {
             var response = await client.DeleteAsync("" + id);
             if (response.IsSuccessStatusCode)
             {
+                TempData["success"] = "Employee Deleted Succesfully";
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -111,7 +114,7 @@ namespace InternalJobPortalMVC.Controllers
         }
         [Route("Employee/ByJobId/{JobID}")]
         [HttpGet]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> ByJobId(string JobID)
         {
             try
@@ -125,6 +128,7 @@ namespace InternalJobPortalMVC.Controllers
             }
         }
         [Route("EmployeeSkill/{id}")]
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> EmployeeSkillIndex(string id)
         {
             string userName = User.Identity.Name;
@@ -146,6 +150,7 @@ namespace InternalJobPortalMVC.Controllers
 
         // GET: EmployeeSkillController/Details/5
         [Route("EmployeeSkill/Details/{empId}/{skillId}")]
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> EmployeeSkillDetails(string empId, string skillId)
         {
             EmployeeSkill empSkill = await client2.GetFromJsonAsync<EmployeeSkill>("" + empId + "/" + skillId);
@@ -154,6 +159,7 @@ namespace InternalJobPortalMVC.Controllers
 
         // GET: EmployeeSkillController/Create
         [Route("EmployeeSkill/Create")]
+        [Authorize(Roles = "Employee")]
         public ActionResult EmployeeSkillCreate(string id)
         {
             EmployeeSkill es = new EmployeeSkill();
@@ -165,12 +171,14 @@ namespace InternalJobPortalMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("EmployeeSkill/Create")]
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> EmployeeSkillCreate(EmployeeSkill es)
         {
 
             var response = await client2.PostAsJsonAsync<EmployeeSkill>("", es);
             if (response.IsSuccessStatusCode)
             {
+                TempData["success"] = "EmployeeSkill Created Succesfully";
                 return RedirectToAction(nameof(EmployeeSkillIndex), new { id = es.EmployeeID });
             }
             else
@@ -180,6 +188,7 @@ namespace InternalJobPortalMVC.Controllers
             }
         }
         [Route("EmployeeSkill/Edit/{empId}/{skillId}")]
+        [Authorize(Roles = "Employee")]
         // GET: EmployeeSkillController/Edit/5
         public async Task<ActionResult> EmployeeSkillEdit(string empId, string skillId)
         {
@@ -189,6 +198,7 @@ namespace InternalJobPortalMVC.Controllers
 
         // POST: EmployeeSkillController/Edit/5
         [Route("EmployeeSkill/Edit/{empId}/{skillId}")]
+        [Authorize(Roles = "Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EmployeeSkillEdit(string empId, string skillId, EmployeeSkill es)
@@ -196,6 +206,7 @@ namespace InternalJobPortalMVC.Controllers
             try
             {
                 await client2.PutAsJsonAsync<EmployeeSkill>("" + empId + "/" + skillId, es);
+                TempData["success"] = "EmployeeSkill Updated Succesfully";
                 return RedirectToAction(nameof(EmployeeSkillIndex), new {id = empId});
             }
             catch
@@ -205,6 +216,7 @@ namespace InternalJobPortalMVC.Controllers
         }
 
         // GET: EmployeeSkillController/Delete/5
+        [Authorize(Roles = "Employee")]
         [Route("EmployeeSkill/Delete/{empId}/{skillId}")]
         public async Task<ActionResult> EmployeeSkillDelete(string empId, string skillId)
         {
@@ -216,11 +228,13 @@ namespace InternalJobPortalMVC.Controllers
         [Route("EmployeeSkill/Delete/{empId}/{skillId}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> EmployeeSkillDelete(string empId, string skillId, IFormCollection collection)
         {
             try
             {
                 await client2.DeleteAsync("" + empId + "/" + skillId);
+                TempData["success"] = "EmployeeSkill Deleted Succesfully";
                 return RedirectToAction(nameof(EmployeeSkillIndex), new { id = empId });
             }
             catch
@@ -229,6 +243,7 @@ namespace InternalJobPortalMVC.Controllers
             }
         }
         [Route("EmployeeSkill/ByEmployeeId/{empId}")]
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> EmployeeSkillByEmployeeId(string empId)
         {
             try
@@ -242,6 +257,7 @@ namespace InternalJobPortalMVC.Controllers
             }
         }
         [Route("EmployeeSkill/BySkillId{skillId}")]
+        [Authorize(Roles = "Employee")]
         public async Task<ActionResult> EmployeeSkillBySkillId(string skillId)
         {
             try
