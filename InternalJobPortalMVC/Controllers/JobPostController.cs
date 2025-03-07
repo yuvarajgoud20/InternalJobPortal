@@ -18,13 +18,13 @@ namespace InternalJobPortalMVC.Controllers
         // GET: JobPostController
         public async Task<ActionResult> Index()
         {
-            
-            //string userName = User.Identity.Name;
-            //string userRole = User.Claims.ToArray()[4].Value;
-            //string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
-            //HttpClient client2 = new HttpClient();
-            //string token = await client2.GetStringAsync("http://localhost:5227/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
-            //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            string userName = User.Identity.Name;
+            string userRole = User.Claims.ToArray()[4].Value;
+            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
+            HttpClient client2 = new HttpClient();
+            string token = await client2.GetStringAsync("http://localhost:5102/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             
 
             List<JobPost> jobPosts = await client.GetFromJsonAsync<List<JobPost>>("");
@@ -152,15 +152,14 @@ namespace InternalJobPortalMVC.Controllers
         [Authorize(Roles = "Manager")]
         public async Task<ActionResult> ApplicationIndex(int postID)
         {
-            //string userName = User.Identity.Name;
-            //string role = User.Claims.ToArray()[4].Value;
-            //string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
-            //HttpClient client2 = new HttpClient();
-            //string requestedUrl = "http://localhost:5227/api/Auth/" + userName + "/" + role + "/" + secretKey;
-            //string token = await client2.GetStringAsync(requestedUrl);
-            //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-            //List<ApplyJob> jobs = await client3.GetFromJsonAsync<List<ApplyJob>>("ByPostID/"+postID);
-            //return View(jobs);
+            string userName = User.Identity.Name;
+            string role = User.Claims.ToArray()[4].Value;
+            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
+            HttpClient client2 = new HttpClient();
+            string requestedUrl = "http://localhost:5102/api/Auth/" + userName + "/" + role + "/" + secretKey;
+            string token = await client2.GetStringAsync(requestedUrl);
+            client3.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            
             List<ApplyJob> applyJobs = await client3.GetFromJsonAsync<List<ApplyJob>>($"ByPostId/{postID}");
             ViewData["postID"] = postID;
             return View( applyJobs);
@@ -184,6 +183,8 @@ namespace InternalJobPortalMVC.Controllers
         {
             ApplyJob job = new ApplyJob();
             job.PostID = postID;
+            job.AppliedDate = DateTime.Now;
+            job.ApplicationStatus = "P";
             return View(job);
         }
 

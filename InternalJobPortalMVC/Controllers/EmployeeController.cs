@@ -14,13 +14,13 @@ namespace InternalJobPortalMVC.Controllers
         static HttpClient client2 = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/EmployeeSkill/") };
         public async Task<ActionResult> Index()
         {
-            //string userName = User.Identity.Name;
-            //string role = User.Claims.ToArray()[4].Value;
-            //string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
-            //HttpClient client2 = new HttpClient();
-            //string requestedUrl = "http://localhost:5195/api/Auth/" + userName + "/" + role + "/" + secretKey;
-            //string token = await client2.GetStringAsync(requestedUrl);
-            //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            string userName = User.Identity.Name;
+            string role = User.Claims.ToArray()[4].Value;
+            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
+            HttpClient client3 = new HttpClient();
+            string requestedUrl = "http://localhost:5102/api/Auth/" + userName + "/" + role + "/" + secretKey;
+            string token = await client3.GetStringAsync(requestedUrl);
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Employee> employees = await client.GetFromJsonAsync<List<Employee>>("");
             return View(employees);
         }
@@ -127,6 +127,18 @@ namespace InternalJobPortalMVC.Controllers
         [Route("EmployeeSkill/{id}")]
         public async Task<ActionResult> EmployeeSkillIndex(string id)
         {
+            string userName = User.Identity.Name;
+            Employee employee = await client.GetFromJsonAsync<Employee>("" + id);
+            if(employee.EmailID != userName)
+            {
+                throw new InternalJobPortalException("You Cannot Access This Resource");
+            }
+            string role = User.Claims.ToArray()[4].Value;
+            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
+            HttpClient client3 = new HttpClient();
+            string requestedUrl = "http://localhost:5102/api/Auth/" + userName + "/" + role + "/" + secretKey;
+            string token = await client3.GetStringAsync(requestedUrl);
+            client2.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<EmployeeSkill> empSkills = await client2.GetFromJsonAsync<List<EmployeeSkill>>("ByEmployeeID/"+id);
             ViewData["id"] = id;
             return View(empSkills);
@@ -156,7 +168,7 @@ namespace InternalJobPortalMVC.Controllers
         public async Task<ActionResult> EmployeeSkillCreate(EmployeeSkill es)
         {
 
-            var response = await client.PostAsJsonAsync<EmployeeSkill>("", es);
+            var response = await client2.PostAsJsonAsync<EmployeeSkill>("", es);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(EmployeeSkillIndex), new { id = es.EmployeeID });

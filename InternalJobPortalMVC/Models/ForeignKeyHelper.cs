@@ -1,4 +1,5 @@
 ﻿using InternalJobPortalMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace InternalJobPortalMvc.Models
@@ -8,6 +9,12 @@ namespace InternalJobPortalMvc.Models
         public async static Task<List<SelectListItem>> GetEmployeeIds()
         {
             HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Employee/") };
+
+            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
+            HttpClient client2 = new HttpClient();
+            string requestedUrl = "http://localhost:5102/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
+            string token = await client.GetStringAsync(requestedUrl);
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<Employee> employees = await client.GetFromJsonAsync<List<Employee>>("");
             List<SelectListItem> empIds = employees.Select(emp => new SelectListItem
@@ -23,6 +30,12 @@ namespace InternalJobPortalMvc.Models
         {
             HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Skill/") };
 
+            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
+            HttpClient client2 = new HttpClient();
+            string requestedUrl = "http://localhost:5102/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
+            string token = await client.GetStringAsync(requestedUrl);
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
             List<Skill> skills = await client.GetFromJsonAsync<List<Skill>>("");
             List<SelectListItem> skillIds = skills.Select(skill => new SelectListItem
             {
@@ -37,6 +50,12 @@ namespace InternalJobPortalMvc.Models
         {
             HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Job/") };
 
+            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
+            HttpClient client2 = new HttpClient();
+            string requestedUrl = "http://localhost:5102/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
+            string token = await client.GetStringAsync(requestedUrl);
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
             List<Job> jobs = await client.GetFromJsonAsync<List<Job>>("");
             List<SelectListItem> jobIds = jobs.Select(job => new SelectListItem
             {
@@ -50,6 +69,12 @@ namespace InternalJobPortalMvc.Models
         public async static Task<List<SelectListItem>> GetPostIds()
         {
             HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/JobPost/") };
+
+            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
+            HttpClient client2 = new HttpClient();
+            string requestedUrl = "http://localhost:5102/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
+            string token = await client.GetStringAsync(requestedUrl);
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<JobPost> posts = await client.GetFromJsonAsync<List<JobPost>>("");
             List<SelectListItem> postIds = posts.Select(post => new SelectListItem

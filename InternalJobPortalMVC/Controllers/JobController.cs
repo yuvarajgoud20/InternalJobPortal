@@ -117,22 +117,15 @@ public class JobController : Controller
     }
     static HttpClient client3 = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/JobSkill/") };
         // GET: JobSkillController
-    [Authorize(Roles = "Manager")]
     public async Task<ActionResult> JobSkillIndex(string jobID)
     {
-            string userName = User.Identity.Name;
-            string userRole = User.Claims.ToArray()[4].Value;
-            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
-            HttpClient client2 = new HttpClient();
-            string token = await client2.GetStringAsync("http://localhost:5102/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        List<JobSkill> jobSkills = await client.GetFromJsonAsync<List<JobSkill>>("ByJobID/" + jobID);
-        return View(jobSkills);
+            
+            List<JobSkill> jobSkills = await client3.GetFromJsonAsync<List<JobSkill>>("ByJobID/" + jobID);
+            return View(jobSkills);
     }
 
     // GET: JobSkillController/Details/5
     [Route("JobSkill/{jobID}/{skillID}")]
-    [Authorize(Roles = "Manager")]
     public async Task<ActionResult> JobSkillDetails(string jobID, string skillID)
     {
         JobSkill jobSkill = await client3.GetFromJsonAsync<JobSkill>("" + jobID + "/" + skillID);
@@ -141,9 +134,10 @@ public class JobController : Controller
 
     // GET: JobSkillController/Create
     [Authorize(Roles ="Manager")]
-    public ActionResult CreateJobSkill()
+    public ActionResult CreateJobSkill(string jobID)
     {
         JobSkill jobSkill = new JobSkill();
+            jobSkill.JobID = jobID;
         return View(jobSkill);
     }
 
@@ -153,11 +147,11 @@ public class JobController : Controller
     [Authorize(Roles ="Manager")]
     public async Task<ActionResult> CreateJobSkill(JobSkill jobSkill)
     {
-        var response = await client.PostAsJsonAsync<JobSkill>("", jobSkill);
+        var response = await client3.PostAsJsonAsync<JobSkill>("", jobSkill);
         if (response.IsSuccessStatusCode)
         {
 
-            return RedirectToAction(nameof(JobSkillIndex), new { id = jobSkill.JobID });
+            return RedirectToAction(nameof(JobSkillByJobID), new { jobID = jobSkill.JobID });
         }
         else
         {
@@ -219,10 +213,18 @@ public class JobController : Controller
             return View();
         }
     }
-    [Authorize(Roles ="Manager")]
+    //[Authorize(Roles ="Manager")]
     public async Task<ActionResult> JobSkillByJobID(string jobID)
     {
-        List<JobSkill> jobSkillsByJobID = await client3.GetFromJsonAsync<List<JobSkill>>("" + "ByJobID/" + jobID);
+            string userName = User.Identity.Name;
+            string userRole = User.Claims.ToArray()[4].Value;
+            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
+            HttpClient client2 = new HttpClient();
+            string token = await client2.GetStringAsync("http://localhost:5102/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
+            client3.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            List<JobSkill> jobSkillsByJobID = await client3.GetFromJsonAsync<List<JobSkill>>("" + "ByJobID/" + jobID);
+            ViewData["jobID"] = jobID;
         return View(jobSkillsByJobID);
     }
     [Authorize(Roles ="Manager")]
