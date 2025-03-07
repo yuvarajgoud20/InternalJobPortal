@@ -38,6 +38,21 @@ namespace InternalJobPortalWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
+
+        [HttpGet("ByEmail/{email}")]
+        public async Task<ActionResult> GetEmployee(string email)
+        {
+            try
+            {
+                Employee employee = await empRepo.GetEmployeeByEmailAsync(email);
+                return Ok(employee);
+
+            }
+            catch (InternalJobPortalException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
         [HttpPost]
         public async Task<ActionResult> Insert(Employee employee)
         {

@@ -14,6 +14,7 @@ namespace InternalJobPortalLibrary.Repos
        Task UpdateEmployeeAsync(string EmployeeId,Employee employee);
         Task<List<Employee>> GetAllEmployeesAsync();
         Task<Employee> GetEmployeeAsync(string employeeID);
+        Task<Employee> GetEmployeeByEmailAsync(string email);
         Task<List<Employee>> GetEmployeeByJobIDAsync(string JobID);
       
     }

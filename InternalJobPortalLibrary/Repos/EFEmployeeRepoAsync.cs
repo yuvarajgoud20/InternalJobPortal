@@ -48,6 +48,19 @@ namespace InternalJobPortalLibrary.Repos
             }
 
         }
+        public async Task<Employee> GetEmployeeByEmailAsync(string email)
+        {
+            try
+            {
+                Employee employee = await (from emp in ctx.Employees where emp.EmailID == email select emp).FirstAsync();
+                return employee;
+            }
+            catch (Exception ex)
+            {
+                throw new InternalJobPortalException("No Such Employee Id");
+            }
+
+        }
 
         public async Task InsertEmployeeAsync(Employee employee)
         {

@@ -1,15 +1,59 @@
 ﻿@model ErrorViewModel
+
 @{
+
     ViewData["Title"] = "Error";
+
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
 
-@* @Model.ErrorMessage *@
-@ViewData["ErrorMessage"]
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-<div>
-    <a asp-action="Index"> Back to list</a>
+        .error-container {
+            margin-top: 50px;
+            text-align: center;
+        }
 
-</div>
+        .error-card {
+            margin: auto;
+            padding: 20px;
+            /* border: 1px solid #dc3545; */
+
+            border-radius: 5px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow */
+        }
+
+            .error-card h1, .error-card h2 {
+                color: #dc3545;
+            }
+
+        .back-link {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container error-container">
+        <div class="card error-card">
+            <h1 class="text-danger">Error.</h1>
+            <h2 class="text-danger">An error occurred while processing your request.</h2>
+            <p>@ViewData["ErrorMessage"]</p>
+            <div class="back-link">
+                <a class="btn btn-primary" asp-action="Index">Back to list</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

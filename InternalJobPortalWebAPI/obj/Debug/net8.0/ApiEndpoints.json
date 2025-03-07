@@ -226,6 +226,22 @@
   },
   {
     "ContainingType": "InternalJobPortalWebApi.Controllers.EmployeeController",
+    "Method": "GetEmployee",
+    "RelativePath": "api/Employee/ByEmail/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InternalJobPortalWebApi.Controllers.EmployeeController",
     "Method": "GetByJobId",
     "RelativePath": "api/Employee/Employee/ByJobId/{JobID}",
     "HttpMethod": "GET",

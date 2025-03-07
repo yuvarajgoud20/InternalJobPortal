@@ -1,66 +1,76 @@
-﻿@model IEnumerable<InternalJobPortalMVC.Models.Employee>
-
+﻿@using System.Security.Claims
 @{
-    ViewData["Title"] = "Index";
+    var role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+}
+<style>
+    /* Employee Cards */
+    .card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 8px 8px 16px #b8babc, -8px -8px 16px #ffffff;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.5s ease-in-out;
+        background: #ffffff; /* Default white background */
+    }
+
+        /* Blurred Background Image */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: blur(2px); /* Apply Blur Only to Image */
+            transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
+            opacity: 1;
+        }
+
+        /* White Background on Hover */
+        .card:hover::before {
+            opacity: 0; /* Hide the image on hover */
+            filter: blur(0px);
+        }
+
+    /* Ensure Text and Content Stay Clear */
+    .card-body {
+        position: relative;
+        z-index: 1;
+        background: transparent;
+    }
+
+</style>
+
+<h1>Employees</h1>
+
+@if (role == "Manager")
+{
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 }
 
-<h1>Index</h1>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@item.EmployeeName</h5>
+                    <p class="card-text">
+                        <strong>Email:</strong> @item.EmailID <br>
+                        <strong>Phone:</strong> @item.PhoneNo <br>
+                        <strong>Experience:</strong> @item.TotalExperience years <br>
+                        <strong>Job ID:</strong> @item.JobID
+                    </p>
+                    <a asp-action="EmployeeSkillIndex" asp-route-id="@item.EmployeeID" class="btn btn-info">Employee Skills</a>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.EmployeeID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmployeeName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmailID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalExperience)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JobID)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalExperience)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobID)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeID  }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID }) |
-                    @Html.ActionLink("EmployeeSkills", "EmployeeSkillIndex", new { id = item.EmployeeID })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                  
+                        <a asp-action="Edit" asp-route-id="@item.EmployeeID" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.EmployeeID" class="btn btn-danger">Delete</a>
+            
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,52 +1,51 @@
 ﻿@model IEnumerable<InternalJobPortalMVC.Models.EmployeeSkill>
+@using System.Security.Claims
 
 @{
-    ViewData["Title"] = "EmployeeSkillIndex";
+    ViewData["Title"] = "Employee Skill Index";
+    var role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
 }
 
-<h1>EmployeeSkillIndex</h1>
+<h1 class="mb-4 text-center">Employee Skills</h1>
 
-<p>
-    @* <a asp-action="EmployeeSkillCreate">Create New</a> *@
-    @Html.ActionLink("Create new", "EmployeeSkillCreate", new { id = ViewData["id"] })
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.EmployeeID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SkillID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SkillExperience)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SkillID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SkillExperience)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EmployeeSkillEdit", new {  empId=item.EmployeeID , skillId = item.SkillID }) |
-                    @Html.ActionLink("Details", "EmployeeSkillDetails", new { empId = item.EmployeeID, skillId = item.SkillID }) |
-                    @Html.ActionLink("Delete", "EmployeeSkillDelete", new { empId = item.EmployeeID, skillId = item.SkillID }) 
-                    
-            </td>
-        </tr>
+@if (role == "Manager")
+{
+    <div class="text-end mb-3">
+        <a asp-action="EmployeeSkillCreate" asp-route-id="@ViewData["id"]" class="btn btn-primary">
+            Create New
+        </a>
+    </div>
 }
-    </tbody>
-</table>
-<div>
-    <a asp-action="Index">Back to List</a>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Employee ID: @item.EmployeeID</h5>
+                    <p class="card-text">
+                        <strong>Skill ID:</strong> @item.SkillID <br>
+                        <strong>Experience:</strong> @item.SkillExperience years
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="EmployeeSkillDetails" asp-route-empId="@item.EmployeeID" asp-route-skillId="@item.SkillID"
+                           class="btn btn-info btn-sm">Details</a>
+
+                        
+                            <a asp-action="EmployeeSkillEdit" asp-route-empId="@item.EmployeeID" asp-route-skillId="@item.SkillID"
+                               class="btn btn-warning btn-sm">Edit</a>
+
+                            <a asp-action="EmployeeSkillDelete" asp-route-empId="@item.EmployeeID" asp-route-skillId="@item.SkillID"
+                               class="btn btn-danger btn-sm">Delete</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>

@@ -354,6 +354,28 @@
         }
       }
     },
+    "/api/Employee/ByEmail/{email}": {
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Employee/Employee/ByJobId/{JobID}": {
       "get": {
         "tags": [

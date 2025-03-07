@@ -1,61 +1,57 @@
 ﻿@model IEnumerable<InternalJobPortalMVC.Models.JobPost>
+@using System.Security.Claims
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Job Post Index";
+    var role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
 }
 
-<h1>Index</h1>
+<h1 class="mb-4 text-center">Job Posts</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PostID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JobID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateOfPosting)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastDateToApply)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NoOfVacancies)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfPosting)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastDateToApply)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NoOfVacancies)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { postID=item.PostID  }) |
-                    @Html.ActionLink("Details", "Details", new { postID = item.PostID }) |
-                    @Html.ActionLink("Delete", "Delete", new { postID = item.PostID }) |
-                    @Html.ActionLink("ByJobId", "ByJobId", new { jobId = item.JobID }) |
-                    @Html.ActionLink("Applications", "ApplicationIndex", new { postID = item.PostID })
-            </td>
-        </tr>
+@if (role == "Manager")
+{
+    <div class="text-end mb-3">
+        <a asp-action="Create" class="btn btn-primary">Create New Job</a>
+    </div>
 }
-    </tbody>
-</table>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Job ID: @item.JobID</h5>
+                    <p class="card-text">
+                        <strong>Post ID:</strong> @item.PostID <br>
+                        <strong>Date of Posting:</strong> @(item.DateOfPosting?.ToShortDateString() ?? "N/A") <br>
+                        <strong>Last Date to Apply:</strong> @(item.LastDateToApply?.ToShortDateString() ?? "N/A") <br>
+                        <strong>No. of Vacancies:</strong> @item.NoOfVacancies
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <a asp-action="Details" asp-route-postID="@item.PostID" class="btn btn-info btn-sm">View Details</a>
+                        <a asp-action="ByJobId" asp-route-jobId="@item.JobID" class="btn btn-secondary btn-sm">Find by Job ID</a>
+
+                        @if (role == "Manager")
+                        {
+                            <a asp-action="ApplicationIndex" asp-route-postID="@item.PostID" class="btn btn-success btn-sm">Applications</a>
+                            <a asp-action="Edit" asp-route-postID="@item.PostID" class="btn btn-warning btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-postID="@item.PostID" class="btn btn-danger btn-sm">Delete</a>
+                        }
+                        else if (role == "Employee")
+                        {
+                            @* <a asp-action="ApplicationCreate" asp-controller="Application" asp-route-postID="@item.PostID" class="btn btn-primary btn-sm">Apply</a> *@
+                            @Html.ActionLink("Apply", "ApplicationCreate", new { postID = item.PostID })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    }
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

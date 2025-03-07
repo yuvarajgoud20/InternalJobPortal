@@ -1,60 +1,55 @@
-﻿@model IEnumerable<InternalJobPortalMVC.Models.ApplyJob>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 
 @{
-    ViewData["Title"] = "ApplicationIndex";
+    var userRole = HttpContextAccessor.HttpContext.User.FindFirst("Role")?.Value; // Assuming you store the role in claims
 }
 
-<h1>ApplicationIndex</h1>
+@model IEnumerable<InternalJobPortalMVC.Models.ApplyJob>
 
-<p>
-    @* <a asp-action="ApplicationCreate">Create New</a> *@
-	@Html.ActionLink("Create new", "ApplicationCreate", new { postID = ViewData["postID"] })
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PostID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmployeeID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AppliedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApplicationStatus)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AppliedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApplicationStatus)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "ApplicationEdit", new { postID=item.PostID , employeeId=item.EmployeeID }) |
-                    @Html.ActionLink("Details", "ApplicationDetails", new { postID = item.PostID, employeeId = item.EmployeeID }) |
-                    @Html.ActionLink("Delete", "ApplicationDelete", new { postID = item.PostID, employeeId = item.EmployeeID }) 
-                    @* @Html.ActionLink("ByPostId", "ApplicationByPostId", new { postID = item.PostID}) | *@
-                    @* @Html.ActionLink("ByEmpId", "ApplicationByEmpId", new { employeeId = item.EmployeeID }) | *@
-
-            </td>
-        </tr>
+@{
+    ViewData["Title"] = "Application Index";
 }
-    </tbody>
-</table>
-<div>
-    <a asp-action="Index">Back to List</a>
+
+<h2 class="text-center mb-4">Job Applications</h2>
+
+@if (userRole == "Manager")
+{
+    <p class="text-center">
+        @Html.ActionLink("Create new", "ApplicationCreate", new { postID = ViewData["postID"] }, new { @class = "btn btn-primary" })
+    </p>
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Post ID: @item.PostID</h5>
+                        <p class="card-text">
+                            <strong>Employee ID:</strong> @item.EmployeeID <br>
+                            <strong>Applied Date:</strong> @(item.AppliedDate?.ToShortDateString() ?? "N/A") <br>
+                            <strong>Status:</strong> @item.ApplicationStatus
+                        </p>
+
+                       
+                            <div class="d-flex justify-content-between">
+                                <a asp-action="ApplicationEdit" asp-route-postID="@item.PostID" asp-route-employeeId="@item.EmployeeID" class="btn btn-warning btn-sm">Edit</a>
+                                <a asp-action="ApplicationDetails" asp-route-postID="@item.PostID" asp-route-employeeId="@item.EmployeeID" class="btn btn-info btn-sm">Details</a>
+                                <a asp-action="ApplicationDelete" asp-route-postID="@item.PostID" asp-route-employeeId="@item.EmployeeID" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                       
+                            <a asp-action="ApplicationDetails" asp-route-postID="@item.PostID" asp-route-employeeId="@item.EmployeeID" class="btn btn-info btn-sm">View Details</a>
+                       
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>

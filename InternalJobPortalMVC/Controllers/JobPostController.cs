@@ -177,11 +177,25 @@ namespace InternalJobPortalMVC.Controllers
             return View(job);
 
         }
-        [Authorize(Roles = "Manager")]
+        //[Authorize]
         // GET: JobPostController/Create
-        public ActionResult ApplicationCreate(int postID)
+        public async Task<ActionResult> ApplicationCreate(int postID)
         {
+            HttpClient client5 = new HttpClient();
+
+            string userName = User.Identity.Name;
+            string role = User.Claims.ToArray()[4].Value;
+            string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
+            HttpClient client4 = new HttpClient();
+            string requestedUrl = "http://localhost:5102/api/Auth/" + userName + "/" + role + "/" + secretKey;
+            string token = await client4.GetStringAsync(requestedUrl);
+            client5.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            
+            Employee emp = await client5.GetFromJsonAsync<Employee>("http://localhost:5102/api/Employee/ByEmail/" + userName);
+            
+
             ApplyJob job = new ApplyJob();
+            job.EmployeeID = emp.EmployeeID;
             job.PostID = postID;
             job.AppliedDate = DateTime.Now;
             job.ApplicationStatus = "P";
@@ -191,16 +205,18 @@ namespace InternalJobPortalMVC.Controllers
         // POST: JobPostController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Manager")]
+        //[Authorize]
         public async Task<ActionResult> ApplicationCreate(ApplyJob job)
         {
+            
+            
             var response = await client3.PostAsJsonAsync("", job);
             if (response.IsSuccessStatusCode)
                 return RedirectToAction(nameof(ApplicationIndex), new { postID = job.PostID });
             else
             {
                 string msg = await response.Content.ReadAsStringAsync();
-                throw new InternalJobPortalException(msg);
+                throw new InternalJobPortalException("You have Already Applied for this JOb");
             }
         }
         [Route("Application/Edit/{postID}/{employeeId}")]

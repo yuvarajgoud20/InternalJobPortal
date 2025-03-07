@@ -1,8 +1,225 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    body {
+        background-color: #ffffff;
+        font-family: Arial, sans-serif;
+        box-sizing: border-box;
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .hero {
+        background: url('https://images.pexels.com/photos/6814523/pexels-photo-6814523.jpeg') no-repeat center center/cover;
+        color: #ffffff;
+        text-align: center;
+        min-height: 65vh; /* Full viewport height */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 40px;
+        font-size: 25px;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    /* Section Headers */
+    .section-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    /* Card Styles */
+    .card {
+        background-image: url('https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg');
+        box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        transition: 0.3s;
+    }
+        .card:hover {
+            box-shadow: 18px 13px 42px -21px rgba(0,0,0,1);
+            -webkit-box-shadow: 18px 13px 42px -21px rgba(0,0,0,1);
+            -moz-box-shadow: 18px 13px 42px -21px rgba(0,0,0,1);
+        }
+
+
+    /* Team Section */
+    /* Team Section */
+    .team-card {
+        background: url('https://images.pexels.com/photos/1323550/pexels-photo-1323550.jpeg') no-repeat center center/cover;
+        box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .team-card:hover {
+            box-shadow: inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff;
+            transform: scale(1.05);
+        }
+
+        .team-card h5 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+    .linkedin-btn {
+        display: inline-block;
+        background-color: #0077b5;
+        color: white;
+        padding: 6px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .linkedin-btn:hover {
+            background-color: #005582;
+            box-shadow: 0px 5px 15px rgba(0, 119, 181, 0.3);
+        }
+
+
+
+
+    /* Ready to Change Section */
+    .ready-section {
+        background: url('https://images.pexels.com/photos/18069239/pexels-photo-18069239/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-how-ai-powered-tools-can-support-us-and-save-time-it-was-created-by-martina-stiftinger-as-part-of-the-visua.png') no-repeat center center/cover;
+        color: #ffffff;
+        text-align: center;
+        padding: 50px 20px;
+        border-radius: 10px;
+        margin-top: 50px;
+
+        margin-bottom: 50px; /* Added margin-bottom */
+    }
+
+    .ready-btn {
+        background-color: #ffffff;
+        color: #007bff;
+        font-weight: bold;
+        padding: 12px 24px;
+        border-radius: 5px;
+        border: none;
+        transition: 0.3s;
+        width:100wh;
+    }
+
+        .ready-btn:hover {
+            background-color: #e6e6e6;
+        }
+</style>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1 class="fw-bold">Welcome to Internal Job Portal</h1>
+    <p class="lead">Find internal job opportunities, apply seamlessly, and advance your career.</p>
+    <a href="/Job/Index" class="btn btn-primary btn-lg">Explore Jobs</a>
+</section>
+
+<div class="container mt-5">
+    <!-- Features Section -->
+    <section class="row text-center">
+        <div class="col-md-4 mb-3">
+            <div class="card p-4">
+                <span style="color :white"><h4>Find Jobs</h4></span>
+                <p>Search and apply for internal job openings easily.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card p-4">
+                <span style="color :white"> <h4>Manage Skills</h4></span>
+
+                <p>Update and showcase your skills for career growth.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card p-4">
+                <span style="color :white"><h4>Post Jobs</h4></span>
+
+                <p>Managers can post job openings for internal hiring.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expanded Project Overview -->
+    <section class="mt-5">
+        <h2 class="section-title">Project Overview</h2>
+        <p>The Internal Job Portal (IJP) is designed to revolutionize internal mobility by providing a user-friendly platform where employees can discover new career opportunities within the organization. By centralizing job postings, skills management, and application processes, IJP empowers managers, HR professionals, and employees alike.</p>
+        <p><strong>Key Features:</strong></p>
+        <ul class="list-unstyled text-start ms-5">
+            <li>🔹 <strong>Job Postings:</strong> Managers can easily post, update, and manage job openings.</li>
+            <li>🔹 <strong>Skill Management:</strong> Employees can update their skills, and the platform intelligently matches them with job requirements.</li>
+            <li>🔹 <strong>Seamless Application:</strong> Apply for jobs with a single click, track your application status, and receive timely notifications.</li>
+            <li>🔹 <strong>Administration:</strong> Admins maintain job, skill, and employee records to ensure data integrity and security.</li>
+            <li>🔹 <strong>Secure Access:</strong> Robust authentication ensures that only authorized personnel have access to sensitive information.</li>
+        </ul>
+        <p>Leveraging a modern, clean design and intuitive navigation, IJP helps improve employee engagement and streamlines internal recruitment processes.</p>
+    </section>
+
+    <!-- Team Section -->
+    <!-- Team Section -->
+    <section class="mt-5">
+        <h2 class="section-title">Meet Our Team</h2>
+        <div class="row">
+            <div class="col-md-4 text-center mb-3">
+                <div class="team-card p-4">
+                    <h5>Shaik Mahammed Arif</h5>
+                    <a href="https://www.linkedin.com/in/shaikmahammedarif" target="_blank" class="linkedin-btn">View LinkedIn</a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-3">
+                <div class="team-card p-4">
+                    <h5>Manipreethi Gangisetty</h5>
+                    <a href="https://www.linkedin.com/in/manipreethi-gangisetty" target="_blank" class="linkedin-btn">View LinkedIn</a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-3">
+                <div class="team-card p-4">
+                    <h5>M Yuvaraj Goud</h5>
+                    <a href="https://www.linkedin.com/in/m-yuvaraj-goud" target="_blank" class="linkedin-btn">View LinkedIn</a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-3">
+                <div class="team-card p-4">
+                    <h5>Narayana Sharvani</h5>
+                    <a href="https://www.linkedin.com/in/narayana-sharvani" target="_blank" class="linkedin-btn">View LinkedIn</a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-3">
+                <div class="team-card p-4">
+                    <h5>Nagendla Navya</h5>
+                    <a href="https://www.linkedin.com/in/nagendla-navya" target="_blank" class="linkedin-btn">View LinkedIn</a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-3">
+                <div class="team-card p-4">
+                    <h5>Nettikanti Sravani</h5>
+                    <a href="https://www.linkedin.com/in/nettikanti-sravani" target="_blank" class="linkedin-btn">View LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Ready to Change Section -->
+    <section class="ready-section">
+        <h2 class="fw-bold">Ready to Change Internally?</h2>
+        <p class="lead">Take the next step in your career by exploring new opportunities within your organization.</p>
+        <a href="/Account/Login" class="ready-btn">Login Now</a>
+    </section>
 </div>

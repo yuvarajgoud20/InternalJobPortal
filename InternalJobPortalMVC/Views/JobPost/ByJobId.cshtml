@@ -1,62 +1,31 @@
 ﻿@model IEnumerable<InternalJobPortalMVC.Models.JobPost>
 
 @{
-    ViewData["Title"] = "ByJobId";
+    ViewData["Title"] = "View by Job ID";
 }
 
-<h1>ByJobId</h1>
+<h2 class="text-center mb-4">Job Posts for Job ID: @Model.FirstOrDefault()?.JobID</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PostID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JobID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateOfPosting)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastDateToApply)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NoOfVacancies)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfPosting)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastDateToApply)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NoOfVacancies)
-            </td>
-            <td>
-                @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) | *@
-                @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) | *@
-                @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Post ID: @item.PostID</h5>
+                        <p class="card-text">
+                            <strong>Date of Posting:</strong> @(item.DateOfPosting?.ToShortDateString() ?? "N/A") <br>
+                            <strong>Last Date to Apply:</strong> @(item.LastDateToApply?.ToShortDateString() ?? "N/A") <br>
+                            <strong>No. of Vacancies:</strong> @item.NoOfVacancies
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>

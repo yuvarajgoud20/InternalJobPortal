@@ -1,50 +1,42 @@
-﻿@using InternalJobPortalMvc.Models
-@model InternalJobPortalMVC.Models.ApplyJob
+﻿@model InternalJobPortalMVC.Models.ApplyJob
 
 @{
-    ViewData["Title"] = "ApplicationCreate";
+    ViewData["Title"] = "Apply for Job";
 }
 
-<h1>ApplicationCreate</h1>
+<h2 class="text-center mb-4">Apply for Job</h2>
 
-<h4>ApplyJob</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="ApplicationCreate">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PostID" class="control-label"></label>
-                <input asp-for="PostID" class="form-control" />
-                <span asp-validation-for="PostID" class="text-danger"></span>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4">
+                <form asp-action="ApplicationCreate" method="post">
+                    <div class="mb-3">
+                        <label asp-for="PostID" class="form-label">Post ID</label>
+                        <input asp-for="PostID" class="form-control" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="EmployeeID" class="form-label">Employee ID</label>
+                        <input asp-for="EmployeeID" class="form-control" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="AppliedDate" class="form-label">Applied Date</label>
+                        <input asp-for="AppliedDate" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" readonly />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ApplicationStatus" class="form-label">Application Status</label>
+                        <input asp-for="ApplicationStatus" class="form-control" value="Reviewing" readonly />
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="EmployeeID" class="control-label"></label>
-                @* <input asp-for="EmployeeID" class="form-control" /> *@
-                @Html.DropDownListFor(Model => Model.EmployeeID, await ForeignKeyHelper.GetEmployeeIds())
-                <span asp-validation-for="EmployeeID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                @*<label asp-for="AppliedDate" class="control-label"></label>*@
-                <input hidden asp-for="AppliedDate" class="form-control" />
-                <span asp-validation-for="AppliedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                @*<label asp-for="ApplicationStatus" class="control-label"></label>*@
-                <input hidden asp-for="ApplicationStatus" class="form-control" />
-                <span asp-validation-for="ApplicationStatus" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
-<div>
-    @Html.ActionLink("Back to list", "ApplicationIndex", new { postID = Model.PostID })
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
