@@ -1,0 +1,4 @@
+Web App URL
+Please open the following URL to access the web app:
+
+https://internaljobportalapp-team2-d9b2h7f2a4hqdrf4.eastus2-01.azurewebsites.net/

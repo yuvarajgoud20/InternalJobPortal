@@ -12,30 +12,7 @@
         </h2>
     </div>
 
-    <!-- Table for Job Details -->
-    <div class="table-responsive mt-4">
-        <table class="table table-bordered table-hover shadow-sm">
-            <thead class="thead-dark">
-                <tr>
-                    <th class="text-center">Post ID</th>
-                    <th class="text-center">Date of Posting</th>
-                    <th class="text-center">Last Date to Apply</th>
-                    <th class="text-center">No. of Vacancies</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="text-center">@item.PostID</td>
-                        <td class="text-center">@(item.DateOfPosting?.ToShortDateString() ?? "N/A")</td>
-                        <td class="text-center">@(item.LastDateToApply?.ToShortDateString() ?? "N/A")</td>
-                        <td class="text-center">@item.NoOfVacancies</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+  
 
     <!-- Card Layout for Job Posts -->
     <div class="row mt-4">
