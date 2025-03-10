@@ -12,8 +12,8 @@ namespace InternalJobPortalMVC.Controllers
     [Authorize]
     public class JobPostController : Controller
     {
-        static HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/JobPost/") };
-        static HttpClient client3 = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Application/") };
+        static HttpClient client = new HttpClient { BaseAddress = new Uri("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/JobPost/") };
+        static HttpClient client3 = new HttpClient { BaseAddress = new Uri("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Application/") };
 
         // GET: JobPostController
         public async Task<ActionResult> Index()
@@ -23,7 +23,7 @@ namespace InternalJobPortalMVC.Controllers
             string userRole = User.Claims.ToArray()[4].Value;
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client2 = new HttpClient();
-            string token = await client2.GetStringAsync("http://localhost:5102/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
+            string token = await client2.GetStringAsync("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             
 
@@ -160,7 +160,7 @@ namespace InternalJobPortalMVC.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client2 = new HttpClient();
-            string requestedUrl = "http://localhost:5102/api/Auth/" + userName + "/" + role + "/" + secretKey;
+            string requestedUrl = "https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey;
             string token = await client2.GetStringAsync(requestedUrl);
             client3.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             
@@ -192,11 +192,11 @@ namespace InternalJobPortalMVC.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client4 = new HttpClient();
-            string requestedUrl = "http://localhost:5102/api/Auth/" + userName + "/" + role + "/" + secretKey;
+            string requestedUrl = "https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey;
             string token = await client4.GetStringAsync(requestedUrl);
             client5.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             
-            Employee emp = await client5.GetFromJsonAsync<Employee>("http://localhost:5102/api/Employee/ByEmail/" + userName);
+            Employee emp = await client5.GetFromJsonAsync<Employee>("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Employee/ByEmail/" + userName);
             
 
             ApplyJob job = new ApplyJob();
@@ -217,7 +217,7 @@ namespace InternalJobPortalMVC.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client2 = new HttpClient();
-            string requestedUrl = "http://localhost:5102/api/Auth/" + userName + "/" + role + "/" + secretKey;
+            string requestedUrl = "https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey;
             string token = await client2.GetStringAsync(requestedUrl);
             client3.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -231,7 +231,7 @@ namespace InternalJobPortalMVC.Controllers
             else
             {
                 string msg = await response.Content.ReadAsStringAsync();
-                throw new InternalJobPortalException("You have Already Applied for this JOb");
+                throw new InternalJobPortalException("You Have Already Applied For This Job");
             }
         }
         [Route("Application/Edit/{postID}/{employeeId}")]

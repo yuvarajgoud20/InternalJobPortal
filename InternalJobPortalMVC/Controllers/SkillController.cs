@@ -11,14 +11,14 @@ namespace InternalJobPortalMVCApp.Controllers
     [Authorize]
     public class SkillController : Controller
     {
-        static HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Skill/") };
+        static HttpClient client = new HttpClient { BaseAddress = new Uri("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Skill/") };
         public async Task<ActionResult> Index()
         {
             string userName = User.Identity.Name;
             string userRole = User.Claims.ToArray()[4].Value;
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client2 = new HttpClient();
-            string token = await client2.GetStringAsync("http://localhost:5102/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
+            string token = await client2.GetStringAsync("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Skill> skill = await client.GetFromJsonAsync<List<Skill>>("");
             return View(skill); 

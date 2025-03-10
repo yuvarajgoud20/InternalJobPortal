@@ -1,0 +1,193 @@
+﻿@{
+    ViewData["Title"] = "Documentation";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Heading */
+    .page-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: white;
+        background-color: black;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    /* Card Styling */
+    .doc-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+        transition: 0.3s;
+        text-align: center;
+    }
+
+        .doc-card:hover {
+            box-shadow: inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff;
+        }
+
+    .card-title {
+        font-weight: bold;
+        font-size: 1.4rem;
+    }
+
+    .credentials {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    /* Responsive Grid */
+    .doc-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* Role Cards */
+    .role-card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+    }
+
+    .role-title {
+        font-weight: bold;
+        font-size: 1.3rem;
+        color: #333;
+    }
+
+    .role-description {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    /* Process Flow Styling */
+    .process-section {
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+    }
+
+    .process-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+</style>
+
+<h1 class="page-title">Internal Job Portal (IJP) Documentation</h1>
+
+<!-- Introduction Section -->
+<div class="process-section">
+    <h2 class="process-title">Introduction</h2>
+    <p>
+        The Internal Job Portal (IJP) is a web-based intranet application designed to facilitate the hiring process within an organization.
+        It allows managers to post job openings, employees to apply for relevant positions, and administrators to maintain the system.
+    </p>
+</div>
+
+<!-- User List & Credentials -->
+<h2 class="page-title">User Login Credentials</h2>
+<div class="doc-container">
+    <div class="doc-card">
+        <h3 class="card-title">Admin</h3>
+        <p class="credentials"><strong>Email:</strong> manipreethi.gangisetty@zelis.com</p>
+        <p class="credentials"><strong>Password:</strong> Yuv@r@j123</p>
+    </div>
+
+    <div class="doc-card">
+        <h3 class="card-title">Manager</h3>
+        <p class="credentials"><strong>Email:</strong> myuvaraj.goud@zelis.com</p>
+        <p class="credentials"><strong>Password:</strong> Yuv@r@j123</p>
+    </div>
+
+    <div class="doc-card">
+        <h3 class="card-title">Employee</h3>
+        <p class="credentials"><strong>Email:</strong> arif.shaikmahammed@zelis.com</p>
+        <p class="credentials"><strong>Password:</strong> Yuv@r@j123</p>
+    </div>
+</div>
+
+<!-- Role-Based Permissions -->
+<h2 class="page-title">User Roles & Permissions</h2>
+<div class="doc-container">
+    <div class="role-card">
+        <h3 class="role-title">Admin</h3>
+        <p class="role-description">
+            ✅ Can create, edit, and delete Jobs, Skills, Employees, and Job Skills.<br>
+            ✅ Manages employee registrations and system settings.<br>
+            ✅ Monitors job applications and system logs.
+        </p>
+    </div>
+
+    <div class="role-card">
+        <h3 class="role-title">Manager</h3>
+        <p class="role-description">
+            ✅ Can create, edit, and delete Job Posts.<br>
+            ✅ Can review employee applications and approve/reject candidates.<br>
+            ✅ Cannot modify system-wide settings.
+        </p>
+    </div>
+
+    <div class="role-card">
+        <h3 class="role-title">Employee</h3>
+        <p class="role-description">
+            ✅ Can apply for jobs and view job listings.<br>
+            ✅ Can update their own skills.<br>
+            ❌ Cannot modify job posts or hire employees.
+        </p>
+    </div>
+</div>
+
+<!-- Process Flow Section -->
+<h2 class="page-title">Process Flow</h2>
+<div class="process-section">
+    <h3 class="process-title">How It Works</h3>
+    <ul>
+        <li>🔹 The Admin sets up job roles, skill sets, and employee details.</li>
+        <li>🔹 The Manager creates job postings and reviews applications.</li>
+        <li>🔹 The Employee applies for jobs and updates their skills.</li>
+        <li>🔹 The system processes job applications and notifies employees.</li>
+    </ul>
+</div>
+
+<!-- Database Schema Overview -->
+<h2 class="page-title">Database Schema</h2>
+<div class="process-section">
+    <h3 class="process-title">Main Tables</h3>
+    <ul>
+        <li>📌 Job Table - Stores job details including title, description, and salary.</li>
+        <li>📌 Skill Table - Contains skill names and levels (Beginner, Intermediate, Advanced).</li>
+        <li>📌 Employee Table - Holds employee details including experience and skills.</li>
+        <li>📌 Job Post Table - Tracks job postings and application deadlines.</li>
+        <li>📌 Apply Job Table - Stores employee job applications and statuses.</li>
+    </ul>
+</div>
+
+<!-- Security & Authentication -->
+<h2 class="page-title">Security & Authentication</h2>
+<div class="process-section">
+    <h3 class="process-title">Authentication Method</h3>
+    <p>
+        The application uses JWT (JSON Web Token) for authentication. Only registered users can access job postings and apply.
+    </p>
+    <h3 class="process-title">Authorization</h3>
+    <ul>
+        <li>✅ Admins have full access.</li>
+        <li>✅ Managers have restricted editing rights.</li>
+        <li>✅ Employees can view and apply only.</li>
+    </ul>
+</div>

@@ -6,19 +6,20 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace InternalJobPortalMVC.Controllers
 {
+
     [Authorize]
     public class EmployeeController : Controller
     {
         // GET: EmployeeController
-        static HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Employee/") };
-        static HttpClient client2 = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/EmployeeSkill/") };
+        static HttpClient client = new HttpClient { BaseAddress = new Uri("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Employee/") };
+        static HttpClient client2 = new HttpClient { BaseAddress = new Uri("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/EmployeeSkill/") };
         public async Task<ActionResult> Index()
         {
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client3 = new HttpClient();
-            string requestedUrl = "http://localhost:5102/api/Auth/" + userName + "/" + role + "/" + secretKey;
+            string requestedUrl = "https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey;
             string token = await client3.GetStringAsync(requestedUrl);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<Employee> employees = await client.GetFromJsonAsync<List<Employee>>("");
@@ -135,12 +136,12 @@ namespace InternalJobPortalMVC.Controllers
             Employee employee = await client.GetFromJsonAsync<Employee>("" + id);
             if(employee.EmailID != userName)
             {
-                throw new InternalJobPortalException("You Cannot Access This Resource");
+                throw new InternalJobPortalException("You Only View And Enter Your Skills. Only Employee with mail same as mail that is used while logging in can View and Edit ");
             }
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client3 = new HttpClient();
-            string requestedUrl = "http://localhost:5102/api/Auth/" + userName + "/" + role + "/" + secretKey;
+            string requestedUrl = "https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey;
             string token = await client3.GetStringAsync(requestedUrl);
             client2.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             List<EmployeeSkill> empSkills = await client2.GetFromJsonAsync<List<EmployeeSkill>>("ByEmployeeID/"+id);

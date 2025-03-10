@@ -8,11 +8,11 @@ namespace InternalJobPortalMvc.Models
     {
         public async static Task<List<SelectListItem>> GetEmployeeIds()
         {
-            HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Employee/") };
+            HttpClient client = new HttpClient { BaseAddress = new Uri("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Employee/") };
 
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client2 = new HttpClient();
-            string requestedUrl = "http://localhost:5102/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
+            string requestedUrl = "https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
             string token = await client.GetStringAsync(requestedUrl);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -28,11 +28,11 @@ namespace InternalJobPortalMvc.Models
 
         public async static Task<List<SelectListItem>> GetSkillIds()
         {
-            HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Skill/") };
+            HttpClient client = new HttpClient { BaseAddress = new Uri("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Skill/") };
 
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client2 = new HttpClient();
-            string requestedUrl = "http://localhost:5102/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
+            string requestedUrl = "https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
             string token = await client.GetStringAsync(requestedUrl);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -48,11 +48,11 @@ namespace InternalJobPortalMvc.Models
 
         public async static Task<List<SelectListItem>> GetJobIds()
         {
-            HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Job/") };
+            HttpClient client = new HttpClient { BaseAddress = new Uri("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Job/") };
 
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client2 = new HttpClient();
-            string requestedUrl = "http://localhost:5102/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
+            string requestedUrl = "https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
             string token = await client.GetStringAsync(requestedUrl);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -68,11 +68,11 @@ namespace InternalJobPortalMvc.Models
 
         public async static Task<List<SelectListItem>> GetPostIds()
         {
-            HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/JobPost/") };
+            HttpClient client = new HttpClient { BaseAddress = new Uri("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/JobPost/") };
 
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client2 = new HttpClient();
-            string requestedUrl = "http://localhost:5102/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
+            string requestedUrl = "https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + "myuvaraj.goud@zelis.com" + "/" + "Manager" + "/" + secretKey;
             string token = await client.GetStringAsync(requestedUrl);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 

@@ -11,7 +11,7 @@ namespace InternalJobPortalMVC.Controllers
 
 public class JobController : Controller
 {
-    static HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/Job/") };
+    static HttpClient client = new HttpClient { BaseAddress = new Uri("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Job/") };
     // GET: JobController
     public async Task<ActionResult> Index()
     {
@@ -19,7 +19,7 @@ public class JobController : Controller
             string userRole = User.Claims.ToArray()[4].Value;
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client2 = new HttpClient();
-            string token = await client2.GetStringAsync("http://localhost:5102/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
+            string token = await client2.GetStringAsync("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         List<Job> jobs = await client.GetFromJsonAsync<List<Job>>("");
         return View(jobs);
@@ -109,7 +109,7 @@ public class JobController : Controller
         var response = await client.DeleteAsync("" + jid);
         if (response.IsSuccessStatusCode)
         {
-                TempData["success"] = "Job Created Succesfully";
+                TempData["success"] = "Job Deleted Succesfully";
                 return RedirectToAction(nameof(Index));
         }
         else
@@ -118,7 +118,7 @@ public class JobController : Controller
             throw new InternalJobPortalException(errorMessage);
         }
     }
-    static HttpClient client3 = new HttpClient { BaseAddress = new Uri("http://localhost:5102/api/JobSkill/") };
+    static HttpClient client3 = new HttpClient { BaseAddress = new Uri("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/JobSkill/") };
         // GET: JobSkillController
     public async Task<ActionResult> JobSkillIndex(string jobID)
     {
@@ -225,7 +225,7 @@ public class JobController : Controller
             string userRole = User.Claims.ToArray()[4].Value;
             string secretKey = "Johny Johny yes papa....open your laptop HAHAHA!!!";
             HttpClient client2 = new HttpClient();
-            string token = await client2.GetStringAsync("http://localhost:5102/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
+            string token = await client2.GetStringAsync("https://internaljobportalwebapi-d9e4f0fgf2bccmcp.eastus2-01.azurewebsites.net/api/Auth/" + userName + "/" + userRole + "/" + secretKey);
             client3.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<JobSkill> jobSkillsByJobID = await client3.GetFromJsonAsync<List<JobSkill>>("" + "ByJobID/" + jobID);
